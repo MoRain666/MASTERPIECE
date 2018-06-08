@@ -2,9 +2,10 @@
   "name": "masterpiece",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://morain666.github.io/masterpiece",
   "dependencies": {
-    "gh-pages": "^1.2.0",
+    "compression": "^1.7.2",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-router-dom": "^4.2.2",
@@ -12,8 +13,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "build": "react-scripts build"
   }
 }
