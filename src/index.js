@@ -4,7 +4,7 @@ import './css/index.css';
 import registerServiceWorker from './js/registerServiceWorker';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './js/components/home.jsx';
-import Game from './js/components/game';
+import Game from './js/components/game.jsx';
 import NotFound from './js/components/notfound.jsx';
 
 ReactDOM.render(<Router>
