@@ -1,4 +1,5 @@
 @import url('./reset.css');
+@import url('./LandingPage/Landing.css');
 body {
   margin: 0;
   padding: 0;
