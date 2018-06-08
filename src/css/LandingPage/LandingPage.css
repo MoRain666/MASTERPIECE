@@ -1,10 +1,50 @@
+@font-face {
+    font-family: 'Eater';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Eater'), local('Eater-Regular'), url(https://fonts.gstatic.com/s/eater/v6/mtG04_FCK7bOvquxsXA.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+    font-family: 'Anton';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Anton Regular'), local('Anton-Regular'), url(https://fonts.gstatic.com/s/anton/v9/1Ptgg87LROyAm3Kz-C8.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 .LandingPage{
     width: 100%;
     height: 1600px;
     display: flex;
 }
+.LandingPage-Promo-and-Header{
+    background-image: url('../../img/LandingPage/superman.jpg');
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 30%;
+}
+.LandingPage-Header-Logo{
+    display: flex;
+    align-items: center;
+    font-family: "Eater";
+    font-size: 40px;
+    margin-left: 3%;
+}
+.LandingPage a{
+    text-decoration: none;
+}
 .LandingPage-Header{
     width: inherit;
-    height: 15%;
-    background-color: sienna;
+    height: 100px;
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+}
+.LandingPage-Header-Links-List{
+    display: flex;
+    align-items: center;
+    width: 60%;
+    justify-content: space-around;
+    font-family: "Eater";
+    font-size: 20px;
 }
