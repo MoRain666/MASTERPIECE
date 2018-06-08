@@ -1,10 +1,9 @@
 import React from 'react';
+import Header from './ComponentsForHome/header';
 class Home extends React.Component{
     render(){
         return <div className='LandingPage'>
-        <h2>Главная</h2>
-        <h1>Тут будет LandingPage</h1>
-        <a href="/game">game</a>
+            <Header />
         </div>;
     }
 }
