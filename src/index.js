@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import './css/index.css';
 import registerServiceWorker from './js/registerServiceWorker';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './js/components/home.jsx';
-import Game from './js/components/game.jsx';
-import NotFound from './js/components/notfound.jsx';
+import Home from './js/MainComponents/home';
+import Game from './js/MainComponents/game';
+import NotFound from './js/MainComponents/notfound';
 
 ReactDOM.render(<Router>
     <Switch>
@@ -14,5 +14,5 @@ ReactDOM.render(<Router>
         <Route component={NotFound} />
     </Switch>
 </Router>,
-     document.getElementById('root'));
+     document.body);
 registerServiceWorker();
