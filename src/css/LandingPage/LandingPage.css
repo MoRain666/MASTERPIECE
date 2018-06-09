@@ -35,9 +35,8 @@
 .LandingPage a{
     text-decoration: none;
     color: black;
-    background: rgb(253, 234, 205, 0.55);
 }
-.LandingPage-Header li:hover{
+.LandingPage-Header li a:hover{
     background: rgb(253, 234, 205)
 }
 .LandingPage-Header{
@@ -46,6 +45,7 @@
     display: flex;
     position: fixed;
     justify-content: space-between;
+    background: rgb(253, 234, 205, 0.55);
 }
 .LandingPage-Header-Links-List{
     display: flex;

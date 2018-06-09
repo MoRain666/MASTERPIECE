@@ -3,8 +3,7 @@ class Header extends React.Component{
     constructor(props){
         super(props);
         this.state = {linksName: ['Gameplay', 'Start to play', 'About developers', 'Who and what did'],
-                    linksRout: ['gamePlay', 'start', 'about', 'job']    
-    };
+                    linksRout: ['gamePlay', 'start', 'about', 'job']};
     }
 
     render(){
