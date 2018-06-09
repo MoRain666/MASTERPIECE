@@ -22,6 +22,7 @@
     background-repeat: no-repeat;
     width: 100%;
     height: 30%;
+    background-size: cover;
 }
 .LandingPage-Header-Logo{
     display: flex;
@@ -29,9 +30,15 @@
     font-family: "Eater";
     font-size: 40px;
     margin-left: 3%;
+    font-weight: bold;
 }
 .LandingPage a{
     text-decoration: none;
+    color: black;
+    background: rgb(253, 234, 205, 0.55);
+}
+.LandingPage-Header li:hover{
+    background: rgb(253, 234, 205)
 }
 .LandingPage-Header{
     width: inherit;
@@ -43,8 +50,8 @@
 .LandingPage-Header-Links-List{
     display: flex;
     align-items: center;
-    width: 60%;
+    width: 70%;
     justify-content: space-around;
     font-family: "Eater";
-    font-size: 20px;
+    font-size: 23px;
 }
