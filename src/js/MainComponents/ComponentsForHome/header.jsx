@@ -10,7 +10,6 @@ class Header extends React.Component{
         const list = this.state.linksName.map((item, index)=>{
             return <li key={index}><a href={`#${this.state.linksRout[index]}`}>{item}</a></li>;
         });
-        console.log(list);
         return <div className='LandingPage-Promo-and-Header'>
             <header className='LandingPage-Header'>
                 <div className="LandingPage-Header-Logo"><a id='#top' href="#top">{'masterpiece'.toUpperCase()}</a></div>

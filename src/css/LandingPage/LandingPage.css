@@ -16,7 +16,9 @@
     width: 100%;
     height: 1600px;
     display: flex;
+    flex-direction: column;
 }
+/*header*/
 .LandingPage-Promo-and-Header{
     background-image: url('../../img/LandingPage/superman.jpg');
     background-repeat: no-repeat;
@@ -54,4 +56,23 @@
     justify-content: space-around;
     font-family: "Eater";
     font-size: 23px;
+}
+/*gameplay*/
+.LandingPage-GamePlay{
+    display: flex;
+    width: inherit;
+    height: 900px;
+    flex-direction: column;
+    align-items: center;
+}
+.LandingPage-GamePlay h2{
+    margin: 2% 0;
+    font-family: "Anton";
+    font-size: 30px;
+}
+.LandingPage-GamePlay ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
 }
