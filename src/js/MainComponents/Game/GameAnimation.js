@@ -81,7 +81,7 @@ function preloadImg(src) {
 
 class Drawer {
 
-    constructor(canvas, bg, leg, body, head, weapon, hero, cloudOne, cloudTwo) {
+    constructor(canvas, bg, leg, body, head, weapon, hero, cloudOne, cloudTwo, wave, wind, earthquak) {
         this.context = canvas.getContext('2d');
         this.leg = leg;
         this.head = head;
@@ -115,11 +115,21 @@ class Drawer {
             img: bg,
             x1: 0,
             x2: -900
-        }
+        };
+        this.helthWidthHero = 200;
+        this.helthWidthMonster = 200;
+        this.wave = wave;
+        this.waveWidth = 400;
+        this.waveX = 0;
+        this.wind = wind;
+        this.windX = 630;
+        this.earthquak = earthquak;
     }
 
     draw() {
         this.context.clearRect(0, 0, 900, 600);
+
+
 
         this.context.drawImage(this.bgAttr.img, this.bgAttr.x1, 0);
         this.context.drawImage(this.bgAttr.img, this.bgAttr.x2, 0);
@@ -132,6 +142,19 @@ class Drawer {
             this.bgAttr.x2 = -900;
         }
 
+
+        this.context.fillRect(30,30,this.helthWidthHero,30);
+        this.helthWidthHero -= 0.2;
+        if (this.helthWidthHero <= 0) {
+            this.helthWidthHero = 200;
+        }
+
+        this.context.fillRect(670,30,this.helthWidthMonster,30);
+        this.helthWidthMonster -= 0.2;
+        if (this.helthWidthMonster <= 0) {
+            this.helthWidthMonster = 200;
+        }
+        this.context.fillStyle = '#AB0000';
 
         this.context.drawImage(this.cloudOne, this.cloudOneAttr.x, 420, 300, 230);
         if (this.cloudOneAttr.moveRight) {
@@ -159,8 +182,12 @@ class Drawer {
             }
         }
 
+        this.context.drawImage(this.earthquak, 640, 450, 200, 210);
+
+
         this.context.drawImage(this.leg, 680, 430, 120, 100);
         this.context.drawImage(this.body, 670, 320, 140, 140);
+
 
         this.context.drawImage(this.head, 660, this.headAttr.y);
         if (this.headAttr.moveDown) {
@@ -191,6 +218,21 @@ class Drawer {
             }
         }
 
+        this.context.drawImage(this.wave, this.waveX, 340, this.waveWidth, 270);
+        if (this.waveX >= 900) {
+            this.waveX = -200;
+        } else {
+            this.waveX += 5;
+        }
+
+        this.context.drawImage(this.wind, this.windX, 250, 200, 270);
+        if (this.windX >= 640) {
+            this.windX = 620;
+        } else {
+            this.windX += 5;
+        }
+
+
         setTimeout(() => requestAnimFrame(this.draw), 1000 / 60);
     }
 }
@@ -204,9 +246,14 @@ function initDrawer(canvas) {
         preloadImg(monster[3].image),
         preloadImg(require(`${imagePath}/hero.png`)),
         preloadImg(require(`${imagePath}/cloud.png`)),
+        preloadImg(require(`${imagePath}/wave.png`)),
+        preloadImg(require(`${imagePath}/wind.png`)),
+        preloadImg(require(`${imagePath}/earthquak.png`))
 
-    ]).then(([bg, leg, body, head, weapon, hero, cloudOne]) => {
-        return new Drawer(canvas, bg, leg, body, head, weapon, hero, cloudOne, cloudOne);
+
+
+    ]).then(([bg, leg, body, head, weapon, hero, cloudOne, wave, wind, earthquak]) => {
+        return new Drawer(canvas, bg, leg, body, head, weapon, hero, cloudOne, cloudOne, wave, wind, earthquak);
     })
 }
 
