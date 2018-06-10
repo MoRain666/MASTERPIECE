@@ -3,6 +3,7 @@ import Header from './ComponentsForHome/header';
 import GamePlay from './ComponentsForHome/GamePlay';
 import StartToPlay from './ComponentsForHome/startToPlay';
 import Developers from './ComponentsForHome/developers';
+import whatWeDid from './ComponentsForHome/whatWeDid';
 class Home extends React.Component{
     
     render(){
@@ -11,6 +12,7 @@ class Home extends React.Component{
             <GamePlay />
             <StartToPlay />
             <Developers />
+            <whatWeDid />
         </div>;
     }
 }
