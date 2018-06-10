@@ -14,7 +14,7 @@
 }
 .LandingPage{
     width: 100%;
-    height: 1600px;
+    height: 2100px;
     display: flex;
     flex-direction: column;
 }
@@ -76,4 +76,21 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+}
+/*start to play*/
+.LandingPage-StartPlay{
+    width: inherit;
+    height: 500px;
+    background-image: url('../../img/LandingPage/supermanForStart.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.LandingPage-StartPlay button{
+    width: 50%;
+    height: 50%;
+    font-family: Eater;
+    border-radius: 30px;
+    font-size: 100px;
+    background-color: rgb(253, 234, 205);
 }
