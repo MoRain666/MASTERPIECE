@@ -1,6 +1,6 @@
 @import url('./reset.css');
 @import url('./LandingPage/LandingPage.css');
-body {
+html, body {
   height: 100%;
   width: 100%;
 }
