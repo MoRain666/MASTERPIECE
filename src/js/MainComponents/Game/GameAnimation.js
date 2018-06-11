@@ -249,9 +249,6 @@ function initDrawer(canvas) {
         preloadImg(require(`${imagePath}/wave.png`)),
         preloadImg(require(`${imagePath}/wind.png`)),
         preloadImg(require(`${imagePath}/earthquak.png`))
-
-
-
     ]).then(([bg, leg, body, head, weapon, hero, cloudOne, wave, wind, earthquak]) => {
         return new Drawer(canvas, bg, leg, body, head, weapon, hero, cloudOne, cloudOne, wave, wind, earthquak);
     })
