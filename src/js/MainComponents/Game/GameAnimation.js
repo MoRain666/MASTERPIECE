@@ -2,11 +2,11 @@ const imagePath = './assets';
 
 
 const LEGS = [
-    {image: require(`${imagePath}/legs/blue-legs.png`)},
     {image: require(`${imagePath}/legs/boots.png`)},
     {image: require(`${imagePath}/legs/gree-legs.png`)},
     {image: require(`${imagePath}/legs/pink-legs.png`)},
     {image: require(`${imagePath}/legs/round-legs.png`)},
+    {image: require(`${imagePath}/legs/blue-legs.png`)},
     {image: require(`${imagePath}/legs/two-legs.png`)},
     {image: require(`${imagePath}/legs/yellow-legs.png`)},
 ];
@@ -79,6 +79,7 @@ function preloadImg(src) {
     })
 }
 
+
 class Drawer {
 
     constructor(canvas, bg, leg, body, head, weapon, hero, cloudOne, cloudTwo, wave, wind, earthquak) {
@@ -129,31 +130,20 @@ class Drawer {
     draw() {
         this.context.clearRect(0, 0, 900, 600);
 
-
-
         this.context.drawImage(this.bgAttr.img, this.bgAttr.x1, 0);
         this.context.drawImage(this.bgAttr.img, this.bgAttr.x2, 0);
         this.bgAttr.x1 += 1;
-        this.bgAttr.x2 += 1;
         if (this.bgAttr.x1 >= 900) {
             this.bgAttr.x1 = -900;
         }
+        this.bgAttr.x2 += 1;
         if (this.bgAttr.x2 >= 900) {
             this.bgAttr.x2 = -900;
         }
 
-
         this.context.fillRect(30,30,this.helthWidthHero,30);
-        this.helthWidthHero -= 0.2;
-        if (this.helthWidthHero <= 0) {
-            this.helthWidthHero = 200;
-        }
-
         this.context.fillRect(670,30,this.helthWidthMonster,30);
-        this.helthWidthMonster -= 0.2;
-        if (this.helthWidthMonster <= 0) {
-            this.helthWidthMonster = 200;
-        }
+
         this.context.fillStyle = '#AB0000';
 
         this.context.drawImage(this.cloudOne, this.cloudOneAttr.x, 420, 300, 230);
@@ -181,9 +171,6 @@ class Drawer {
                 this.cloudTwoAttr.moveRight = true;
             }
         }
-
-        this.context.drawImage(this.earthquak, 640, 450, 200, 210);
-
 
         this.context.drawImage(this.leg, 680, 430, 120, 100);
         this.context.drawImage(this.body, 670, 320, 140, 140);
@@ -218,24 +205,46 @@ class Drawer {
             }
         }
 
-        this.context.drawImage(this.wave, this.waveX, 340, this.waveWidth, 270);
-        if (this.waveX >= 900) {
-            this.waveX = -200;
-        } else {
-            this.waveX += 5;
-        }
+        setTimeout(() => requestAnimFrame(this.draw), 1000 / 60);
+    }
 
+    drawWindAttack() {
         this.context.drawImage(this.wind, this.windX, 250, 200, 270);
         if (this.windX >= 640) {
             this.windX = 620;
         } else {
             this.windX += 5;
         }
+    }
 
+    drawWaveAttack() {
+        this.context.drawImage(this.wave, this.waveX, 340, this.waveWidth, 270);
+        if (this.waveX >= 900) {
+            this.waveX = -200;
+        } else {
+            this.waveX += 5;
+        }
+    }
 
-        setTimeout(() => requestAnimFrame(this.draw), 1000 / 60);
+    drawEarthquakeAttack() {
+        this.context.drawImage(this.earthquak, 640, 450, 200, 210);
+    }
+
+    drawHelthBarHero(num) {
+        this.helthWidthHero -= num*2;
+        if (this.helthWidthHero <= 0) {
+
+        }
+    }
+
+    drawHelthBarMonster(num) {
+        this.helthWidthMonster -= num*2;
+        if (this.helthWidthMonster <= 0) {
+
+        }
     }
 }
+
 
 function initDrawer(canvas) {
     return Promise.all([
