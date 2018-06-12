@@ -1,9 +1,10 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 class Header extends React.Component{
     constructor(props){
         super(props);
-        this.state = {linksName: ['Gameplay', 'Start to play', 'About developers', 'Who and what did'],
-                    linksRout: ['gamePlay', 'start', 'about', 'job']};
+        this.state = {linksName: ['Gameplay', 'About developers', 'Who and what did'],
+                    linksRout: ['gamePlay', 'about', 'job']};
     }
 
     render(){
@@ -17,6 +18,9 @@ class Header extends React.Component{
                 {list}
                 </ul>
             </header>
+            <div id='start' className='LandingPage-StartPlay'>
+                <Link className='button' to="/game">{'play now'.toUpperCase()}</Link>
+            </div>
         </div>
     }
 }

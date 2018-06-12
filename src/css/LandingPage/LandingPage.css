@@ -79,9 +79,7 @@
 }
 /*start to play*/
 .LandingPage-StartPlay{
-    width: inherit;
-    height: 500px;
-    background-image: url('../../img/LandingPage/supermanForStart.jpg');
+    height: 750px;
     display: flex;
     justify-content: center;
     align-items: center;

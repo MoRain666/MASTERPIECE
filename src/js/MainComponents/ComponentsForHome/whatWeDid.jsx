@@ -1,9 +1,9 @@
 import React from 'react';
-class whatWeDid extends React.Component{
+class WhatWeDid extends React.Component{
     render(){
         return <div>
             
         </div>
     }
 }
-export default whatWeDid;
+export default WhatWeDid;
