@@ -13,7 +13,7 @@ class Header extends React.Component{
         });
         return <div className='LandingPage-Promo-and-Header'>
             <header className='LandingPage-Header'>
-                <div className="LandingPage-Header-Logo"><a id='#top' href="#top">{'masterpiece'.toUpperCase()}</a></div>
+                <div className="LandingPage-Header-Logo">{'masterpiece'.toUpperCase()}</div>
                 <ul className='LandingPage-Header-Links-List'>
                 {list}
                 </ul>
