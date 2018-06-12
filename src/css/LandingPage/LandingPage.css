@@ -123,12 +123,14 @@
 /*who-and-what-did*/
 .LandingPage-job{
     background-image: url('../../img/LandingPage/supermanForJob.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 500px;
     font-family: 'anton';
     font-size: 40px;
     margin-top: 10px;
     display: flex;
-    justify-content: start;
+    justify-content: space-evenly;
     align-items: center;
 }
 .LandingPage-job h3{

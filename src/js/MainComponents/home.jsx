@@ -7,9 +7,9 @@ class Home extends React.Component{
 
     scrollFunction(){
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            document.getElementById("myBtn").style.display = "block";
+            document.getElementById("SrollButton").style.display = "block";
         } else {
-            document.getElementById("myBtn").style.display = "none";
+            document.getElementById("SrollButton").style.display = "none";
         }
     }
 
@@ -28,7 +28,7 @@ class Home extends React.Component{
             <GamePlay />
             <Developers />
             <WhatWeDid />
-            <button onClick={this.topFunction.bind(this)} className='ToTop' id="myBtn">Top</button>
+            <button onClick={this.topFunction.bind(this)} className='ToTop' id="SrollButton">Top</button>
         </div>;
     }
 }
