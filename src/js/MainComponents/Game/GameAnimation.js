@@ -82,7 +82,7 @@ function preloadImg(src) {
 
 class Drawer {
 
-    constructor(canvas, bg, leg, body, head, weapon, hero, cloudOne, cloudTwo, wave, wind, earthquak) {
+    constructor(canvas, bg, leg, body, head, weapon, hero, cloudOne, cloudTwo, wave, wind, earthquak, fire, fist, boss) {
         this.context = canvas.getContext('2d');
         this.leg = leg;
         this.head = head;
@@ -125,6 +125,10 @@ class Drawer {
         this.wind = wind;
         this.windX = 630;
         this.earthquak = earthquak;
+        this.fire = fire;
+        this.fist = fist;
+        this.fistX = 600;
+        this.boss = boss;
     }
 
     draw() {
@@ -141,8 +145,8 @@ class Drawer {
             this.bgAttr.x2 = -900;
         }
 
-        this.context.fillRect(30,30,this.helthWidthHero,30);
-        this.context.fillRect(670,30,this.helthWidthMonster,30);
+        this.context.fillRect(30, 30, this.helthWidthHero, 30);
+        this.context.fillRect(670, 30, this.helthWidthMonster, 30);
 
         this.context.fillStyle = '#AB0000';
 
@@ -205,6 +209,10 @@ class Drawer {
             }
         }
 
+        // this.context.drawImage(this.boss, 350, 100, 500, 500);
+
+
+        // this.context.drawImage(this.fire, 0, 0, 90, 90);
         setTimeout(() => requestAnimFrame(this.draw), 1000 / 60);
     }
 
@@ -230,15 +238,20 @@ class Drawer {
         this.context.drawImage(this.earthquak, 640, 450, 200, 210);
     }
 
+    drawMonsterAttack() {
+        this.context.drawImage(this.fist, this.fistX, 350, 250, 150);
+        this.fistX -= 10;
+    }
+
     drawHelthBarHero(num) {
-        this.helthWidthHero -= num*2;
+        this.helthWidthHero -= num * 2;
         if (this.helthWidthHero <= 0) {
 
         }
     }
 
     drawHelthBarMonster(num) {
-        this.helthWidthMonster -= num*2;
+        this.helthWidthMonster -= num * 2;
         if (this.helthWidthMonster <= 0) {
 
         }
@@ -257,9 +270,12 @@ function initDrawer(canvas) {
         preloadImg(require(`${imagePath}/cloud.png`)),
         preloadImg(require(`${imagePath}/wave.png`)),
         preloadImg(require(`${imagePath}/wind.png`)),
-        preloadImg(require(`${imagePath}/earthquak.png`))
-    ]).then(([bg, leg, body, head, weapon, hero, cloudOne, wave, wind, earthquak]) => {
-        return new Drawer(canvas, bg, leg, body, head, weapon, hero, cloudOne, cloudOne, wave, wind, earthquak);
+        preloadImg(require(`${imagePath}/earthquak.png`)),
+        preloadImg(require(`${imagePath}/fire.gif`)),
+        preloadImg(require(`${imagePath}/fist.png`)),
+        preloadImg(require(`${imagePath}/boss.png`))
+    ]).then(([bg, leg, body, head, weapon, hero, cloudOne, wave, wind, earthquak, fire, fist, boss]) => {
+        return new Drawer(canvas, bg, leg, body, head, weapon, hero, cloudOne, cloudOne, wave, wind, earthquak, fire, fist, boss);
     })
 }
 
