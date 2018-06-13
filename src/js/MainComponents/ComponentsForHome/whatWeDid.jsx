@@ -16,13 +16,13 @@ class WhatWeDid extends React.Component{
         });
         return <div id='job' className='LandingPage-job'>
             <div className='LandingPage-person-work'>
-                <h3>Vlad did:</h3>
+                <h3>Vlad:</h3>
                 <ul>
                     {VladList}
                 </ul>
             </div>
             <div className='LandingPage-person-work'>
-                <h3>Nastya did:</h3>
+                <h3>Nastya:</h3>
                 <ul>
                     {NastyaList}
                 </ul>

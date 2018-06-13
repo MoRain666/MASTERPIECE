@@ -7,9 +7,13 @@ class Home extends React.Component{
 
     scrollFunction(){
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            document.getElementById("SrollButton").style.display = "block";
+            if(document.querySelector('#SrollButton')){
+                document.getElementById("SrollButton").style.display = "block";
+            }
         } else {
-            document.getElementById("SrollButton").style.display = "none";
+            if(document.querySelector('#SrollButton')){
+                document.getElementById("SrollButton").style.display = "none";
+            }
         }
     }
 
@@ -25,10 +29,12 @@ class Home extends React.Component{
     render(){
         return <div className='LandingPage'>
             <Header />
+            <span></span>
             <GamePlay />
+            <span></span>
             <Developers />
             <WhatWeDid />
-            <button onClick={this.topFunction.bind(this)} className='ToTop' id="SrollButton">Top</button>
+            <button onClick={this.topFunction} className='ToTop' id="SrollButton">Top</button>
         </div>;
     }
 }
