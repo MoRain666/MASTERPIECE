@@ -34,7 +34,7 @@ class Home extends React.Component{
             <span></span>
             <Developers />
             <WhatWeDid />
-            <button onClick={this.topFunction} className='ToTop' id="SrollButton">Top</button>
+            <button onClick={this.topFunction} className='ToTop' id="SrollButton">&#8593;</button>
         </div>;
     }
 }
