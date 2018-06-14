@@ -23,36 +23,36 @@
     align-items: center;
 }
 
-img {
-    width: 120px;
+.GamePage img {
+    width: 120px;/*Шутишь так делать????????*/
     height: 120px;
 }
 
-label {
+.GamePage label {
     margin-bottom: 5px;
 }
 
-input, select {
+.GamePage input, select {
     padding: 5px;
     font-size: 16px;
 }
 
-label > input {
+.GamePage label > input {
     display: flex;
     flex-direction: row;
 }
 
-label > input[type=radio] {
+.GamePage label > input[type=radio] {
     visibility: hidden;
     position: absolute;
 }
 
-label > input + img {
+.GamePage label > input + img {
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     margin: 0 15px;
 }
 
-label > input:checked + img {
+.GamePage label > input:checked + img {
     box-shadow: 0 2px 19px 6px white;
 }
