@@ -1,6 +1,4 @@
 import React from 'react';
-
-import ChoseSpellsWindow from './chose-spells-window';
 import initDrawer  from "./GameAnimation";
 import './styles.css';
 
@@ -23,12 +21,11 @@ class Game extends React.Component {
                     console.error(e);
                 });
         }
-    };
+    }
 
     render(){
         return (
             <div className="GamePage">
-                <ChoseSpellsWindow />
                 <canvas
                     className="canvas"
                     ref={this.setCanvas}
