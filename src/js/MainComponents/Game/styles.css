@@ -13,3 +13,46 @@
     box-shadow: 0 0 30px #f8f8f8;
 }
 
+.riddle-window {
+    width: 600px;
+    height: 200px;
+    background: rgb(253, 234, 205);
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+img {
+    width: 120px;
+    height: 120px;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input, select {
+    padding: 5px;
+    font-size: 16px;
+}
+
+label > input {
+    display: flex;
+    flex-direction: row;
+}
+
+label > input[type=radio] {
+    visibility: hidden;
+    position: absolute;
+}
+
+label > input + img {
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin: 0 15px;
+}
+
+label > input:checked + img {
+    box-shadow: 0 2px 19px 6px white;
+}
