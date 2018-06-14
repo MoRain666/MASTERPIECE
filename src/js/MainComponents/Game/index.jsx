@@ -1,5 +1,4 @@
 import React from 'react';
-
 import initDrawer  from "./GameAnimation";
 import './styles.css';
 
