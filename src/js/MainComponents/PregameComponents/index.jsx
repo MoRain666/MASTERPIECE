@@ -1,9 +1,10 @@
 import React from 'react';
+import superman_music from '../../../music/supermen-glavnaya-tema.ogg';
 class PreGame extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            aboutGame: 'Живи и пой, Анастасия, нас ждут великие дела!!!',
+            aboutGame: '4340 year from the birth of Christ.',
             isPlaying: true,
             formRender: ''
         };
@@ -25,6 +26,14 @@ class PreGame extends React.Component{
         }
     }
 
+    reloadPageForAutoPlay(){
+        window.onload = function() {
+            if (!window.location.hash) {
+                window.location = window.location + '#loaded';
+                window.location.reload();
+            }
+        }
+    }
     createNewUser(){
 
     }
@@ -36,20 +45,21 @@ class PreGame extends React.Component{
             <input type="text" required/>
             <h4>Last Name</h4>
             <input type="text" required/>
-            <input onClick={this.createNewUser} type="submit" value="START PLAY"/>
+            <input onClick={this.createNewUser} type="submit" value="NEXT"/>
         </form>;
         setTimeout(()=>{
             this.setState({formRender: form});
             document.querySelector('#titles').remove();
-        }, 10000)
+        }, 50000)
     }
     componentDidMount(){
         this.formRender();
+        this.reloadPageForAutoPlay();
     }
     
     render(){
         return <div id='PreGame' className='PreGame'>
-        <audio id="myAudio" src={require('../../../music/theme-song-superman.mp3')} autoPlay={this.state.isPlaying}></audio>
+        <audio id="myAudio" src={superman_music} autoPlay></audio>
             <button className='audioButton PreGame-PlayButton' onClick={this.togglePlay.bind(this)}></button>
             <img src={require('../../../img/PreGame/supermanFly.gif')} alt=""/>
             <div id="titles">
