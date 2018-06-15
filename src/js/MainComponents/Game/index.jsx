@@ -24,10 +24,16 @@ class Game extends React.Component {
         }
     };
 
+    onAttackSelect = (attackId) => {
+        this.drawer.startAttack(attackId);
+    }
+
     render(){
         return (
             <div className="GamePage">
-                <ChoseSpellsWindow />
+                <ChoseSpellsWindow
+                    onAttackSelect={this.onAttackSelect}
+                />
                 <canvas
                     className="canvas"
                     ref={this.setCanvas}

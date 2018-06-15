@@ -1,3 +1,5 @@
+import {ATTACK_FIRE, ATTACK_GROUND, ATTACK_WATER, ATTACK_WIND} from './const'
+
 const imagePath = './assets';
 
 
@@ -79,6 +81,10 @@ function preloadImg(src) {
     })
 }
 
+const STATE_INITIAL = 0;
+const STATE_ATTACK = 1;
+
+
 
 class Drawer {
 
@@ -96,6 +102,7 @@ class Drawer {
         this.scroll = 0;
         this.imageData = {};
         this.directionCloud = true;
+        this.gameState = STATE_INITIAL;
         this.cloudOneAttr = {
             x: 0,
             moveRight: true
@@ -120,15 +127,47 @@ class Drawer {
         this.helthWidthHero = 200;
         this.helthWidthMonster = 200;
         this.wave = wave;
-        this.waveWidth = 400;
-        this.waveX = 0;
         this.wind = wind;
-        this.windX = 630;
+
         this.earthquak = earthquak;
         this.fire = fire;
         this.fist = fist;
         this.fistX = 600;
         this.boss = boss;
+    }
+
+    startAttack(attackId) {
+        this.gameState = STATE_ATTACK;
+        this.attackAttrs = {
+            id: attackId
+        };
+        if (attackId === ATTACK_WIND) {
+            this.attackAttrs.drawCount = 70;
+            this.attackAttrs.drawAttrs = {
+                x: 570,
+                sprite: this.wind,
+            }
+        } else if (attackId === ATTACK_FIRE) {
+            this.attackAttrs.drawCount = 80;
+            this.attackAttrs.drawAttrs = {
+                x: 600,
+                y: 0,
+                sprite: this.fire,
+            }
+        } else if (attackId === ATTACK_GROUND) {
+            this.attackAttrs.drawCount = 50;
+            this.attackAttrs.drawAttrs = {
+                y: 0,
+                x: 400,
+                sprite: this.earthquak,
+            }
+        } else if (attackId === ATTACK_WATER) {
+            this.attackAttrs.drawCount = 30;
+            this.attackAttrs.drawAttrs = {
+                x: 0,
+                sprite: this.wave,
+            }
+        }
     }
 
     draw() {
@@ -211,31 +250,66 @@ class Drawer {
 
         // this.context.drawImage(this.boss, 350, 100, 500, 500);
 
+        if (this.gameState === STATE_ATTACK) {
+            this.drawAttack()
+        }
 
-        // this.context.drawImage(this.fire, 0, 0, 90, 90);
         setTimeout(() => requestAnimFrame(this.draw), 1000 / 60);
     }
 
-    drawWindAttack() {
-        this.context.drawImage(this.wind, this.windX, 250, 200, 270);
-        if (this.windX >= 640) {
-            this.windX = 620;
-        } else {
-            this.windX += 5;
+    drawAttack() {
+        if (this.attackAttrs.id === ATTACK_WIND) {
+            this.drawWindAttack(this.attackAttrs.drawAttrs)
+        } else if (this.attackAttrs.id === ATTACK_FIRE) {
+            this.drawFireAttack(this.attackAttrs.drawAttrs)
+        } else if (this.attackAttrs.id === ATTACK_GROUND) {
+            this.drawEarthquakeAttack(this.attackAttrs.drawAttrs)
+        } else if (this.attackAttrs.id === ATTACK_WATER) {
+            this.drawWaveAttack(this.attackAttrs.drawAttrs)
+        }
+        this.attackAttrs.drawCount -= 1;
+        if (this.attackAttrs.drawCount <= 0) {
+            this.gameState = STATE_INITIAL;
+            this.attackAttrs = undefined
         }
     }
 
-    drawWaveAttack() {
-        this.context.drawImage(this.wave, this.waveX, 340, this.waveWidth, 270);
-        if (this.waveX >= 900) {
-            this.waveX = -200;
+    drawWindAttack(attrs) {
+        this.context.drawImage(attrs.sprite, attrs.x, 200, 300, 370);
+        if (attrs.x >= 570) {
+            attrs.x = 550;
         } else {
-            this.waveX += 5;
+            attrs.x += 5;
         }
     }
 
-    drawEarthquakeAttack() {
-        this.context.drawImage(this.earthquak, 640, 450, 200, 210);
+    drawFireAttack(attrs) {
+        this.context.drawImage(attrs.sprite, attrs.x, attrs.y, 300, 600);
+
+
+        if (attrs.y >= 600) {
+            attrs.y = 0;
+        } else {
+            attrs.y += 15;
+        }
+    }
+
+    drawEarthquakeAttack(attrs) {
+        this.context.drawImage(attrs.sprite, attrs.x, attrs.y, 600, 550);
+        if (attrs.y >= 130) {
+            attrs.y = 130;
+        } else {
+            attrs.y += 30;
+        }
+    }
+
+    drawWaveAttack(attrs) {
+        this.context.drawImage(attrs.sprite, attrs.x, 100, 700, 570);
+        if (attrs.x >= 900) {
+            attrs.x = -200;
+        } else {
+            attrs.x += 30;
+        }
     }
 
     drawMonsterAttack() {
@@ -271,7 +345,7 @@ function initDrawer(canvas) {
         preloadImg(require(`${imagePath}/wave.png`)),
         preloadImg(require(`${imagePath}/wind.png`)),
         preloadImg(require(`${imagePath}/earthquak.png`)),
-        preloadImg(require(`${imagePath}/fire.gif`)),
+         preloadImg(require(`${imagePath}/fire.png`)),
         preloadImg(require(`${imagePath}/fist.png`)),
         preloadImg(require(`${imagePath}/boss.png`))
     ]).then(([bg, leg, body, head, weapon, hero, cloudOne, wave, wind, earthquak, fire, fist, boss]) => {
