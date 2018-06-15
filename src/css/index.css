@@ -1,7 +1,9 @@
 @import url('./reset.css');
 @import url('./LandingPage/LandingPage.css');
 @import url('./NotFound.css');
+@import url('./PreGame/PreGame.css');
 html, body {
   height: 100%;
   width: 100%;
+  box-sizing: border-box;
 }
