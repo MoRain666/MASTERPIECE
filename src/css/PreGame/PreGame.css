@@ -15,6 +15,10 @@
 .PreGame .scarryContainer {
     font-size: 60px;
     color: yellowgreen;
+    animation-name: blinker;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(1, 0, 0, 1);
+    animation-duration: 2s;
 }
 .PreGame img{
     position: absolute;
@@ -108,3 +112,11 @@
 	0% { top: 100%; }
 	100% { top: -170%; }
 }
+@keyframes blinker {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
