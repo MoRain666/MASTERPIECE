@@ -26,7 +26,7 @@ class PreGame extends React.Component{
     
     render(){
         return <div className='PreGame'>
-        <audio id="myAudio" src="http://www.sousound.com/music/healing/healing_01.mp3" autoPlay></audio>
+        <audio id="myAudio" src={require('../../../music/theme-song-superman.mp3')} autoPlay="true"></audio>
             <button className='audioButton PreGame-PlayButton' onClick={this.togglePlay.bind(this)}></button>
             <div id="titles">
                 <div id="titlecontent">
