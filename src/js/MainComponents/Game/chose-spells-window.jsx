@@ -5,15 +5,13 @@ import './styles.css';
 import {ATTACK_FIRE, ATTACK_GROUND, ATTACK_WATER, ATTACK_WIND, ATTACK_MONSTER} from './const'
 
 
-
 const ATTACKS = [
-    {src: require('./assets/riddleWindow/wind.png'), id: ATTACK_WIND },
-    {src: require('./assets/riddleWindow/fire.png'), id: ATTACK_FIRE },
-    {src: require('./assets/riddleWindow/ground.png'), id: ATTACK_GROUND },
-    {src: require('./assets/riddleWindow/water.png'), id: ATTACK_WATER },
-    { id: ATTACK_MONSTER }
+    {src: require('./assets/riddleWindow/wind.png'), id: ATTACK_WIND},
+    {src: require('./assets/riddleWindow/fire.png'), id: ATTACK_FIRE},
+    {src: require('./assets/riddleWindow/ground.png'), id: ATTACK_GROUND},
+    {src: require('./assets/riddleWindow/water.png'), id: ATTACK_WATER},
+    {id: ATTACK_MONSTER}
 ];
-
 
 
 class ChoseSpellsWindow extends React.Component {
@@ -25,6 +23,7 @@ class ChoseSpellsWindow extends React.Component {
     }
 
     render() {
+
         return (
             <div className="riddle-window">
                 {ATTACKS.map((attack, ind) => {
@@ -41,6 +40,7 @@ class ChoseSpellsWindow extends React.Component {
                 }).slice(0, 4)}
             </div>
         );
+
     }
 }
 

@@ -1,19 +1,21 @@
 import React from 'react';
+
 import ChoseSpellsWindow from "./chose-spells-window"
 import initDrawer  from "./GameAnimation";
+import { GAME_STATE_INITIAL } from './const'
 import './styles.css';
 
 class Game extends React.Component {
     constructor(props){
         super(props);
         this.state ={
-            GameState: 'menu'
+            choseSpellsWindowVisible: true,
         };
     }
 
     setCanvas = (el) => {
         if (el) {
-            initDrawer(el)
+            initDrawer(el, this.onGameStateChanged)
                 .then((drawer) => {
                     this.drawer = drawer;
                     this.drawer.draw();
@@ -24,6 +26,12 @@ class Game extends React.Component {
         }
     };
 
+    onGameStateChanged = (gameState) => {
+        this.setState({
+            choseSpellsWindowVisible: gameState === GAME_STATE_INITIAL,
+        })
+    }
+
     onAttackSelect = (attackId) => {
         this.drawer.startAttack(attackId);
     }
@@ -31,9 +39,12 @@ class Game extends React.Component {
     render(){
         return (
             <div className="GamePage">
-                <ChoseSpellsWindow
-                    onAttackSelect={this.onAttackSelect}
-                />
+                {this.state.choseSpellsWindowVisible && (
+                    <ChoseSpellsWindow
+                        onAttackSelect={this.onAttackSelect}
+                    />
+                )}
+
                 <canvas
                     className="canvas"
                     ref={this.setCanvas}

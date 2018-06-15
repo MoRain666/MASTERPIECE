@@ -21,6 +21,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    animation: riddleWindow 0.35s;
 }
 
 .GamePage img {
@@ -55,4 +56,14 @@
 
 .GamePage label > input:checked + img {
     box-shadow: 0 2px 19px 6px white;
+}
+
+@keyframes riddleWindow {
+    from {
+        transform: scaleX(0.1)scaleY(0.1);
+    }
+    to {
+        transform: scaleX(1)scaleY(1);
+
+    }
 }

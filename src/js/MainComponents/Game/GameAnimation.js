@@ -1,4 +1,4 @@
-import {ATTACK_FIRE, ATTACK_GROUND, ATTACK_WATER, ATTACK_WIND} from './const'
+import {ATTACK_FIRE, ATTACK_GROUND, ATTACK_WATER, ATTACK_WIND, GAME_STATE_ATTACK, GAME_STATE_INITIAL} from './const'
 
 const imagePath = './assets';
 
@@ -81,14 +81,13 @@ function preloadImg(src) {
     })
 }
 
-const STATE_INITIAL = 0;
-const STATE_ATTACK = 1;
+
 
 
 
 class Drawer {
 
-    constructor(canvas, bg, leg, body, head, weapon, hero, cloudOne, cloudTwo, wave, wind, earthquak, fire, fist, boss) {
+    constructor(canvas, bg, leg, body, head, weapon, hero, cloudOne, cloudTwo, wave, wind, earthquak, fire, fist, boss, onGameStateChanged) {
         this.context = canvas.getContext('2d');
         this.leg = leg;
         this.head = head;
@@ -102,7 +101,7 @@ class Drawer {
         this.scroll = 0;
         this.imageData = {};
         this.directionCloud = true;
-        this.gameState = STATE_INITIAL;
+        this.gameState = GAME_STATE_INITIAL;
         this.cloudOneAttr = {
             x: 0,
             moveRight: true
@@ -134,10 +133,16 @@ class Drawer {
         this.fist = fist;
         this.fistX = 600;
         this.boss = boss;
+        this.onGameStateChanged = onGameStateChanged
+    }
+
+    changeGameState(gameState) {
+        this.gameState = gameState
+        this.onGameStateChanged(gameState)
     }
 
     startAttack(attackId) {
-        this.gameState = STATE_ATTACK;
+        this.changeGameState(GAME_STATE_ATTACK);
         this.attackAttrs = {
             id: attackId
         };
@@ -250,7 +255,7 @@ class Drawer {
 
         // this.context.drawImage(this.boss, 350, 100, 500, 500);
 
-        if (this.gameState === STATE_ATTACK) {
+        if (this.gameState === GAME_STATE_ATTACK) {
             this.drawAttack()
         }
 
@@ -269,7 +274,7 @@ class Drawer {
         }
         this.attackAttrs.drawCount -= 1;
         if (this.attackAttrs.drawCount <= 0) {
-            this.gameState = STATE_INITIAL;
+            this.changeGameState(GAME_STATE_INITIAL);
             this.attackAttrs = undefined
         }
     }
@@ -333,7 +338,7 @@ class Drawer {
 }
 
 
-function initDrawer(canvas) {
+function initDrawer(canvas, onGameStateChanged) {
     return Promise.all([
         preloadImg(require(`${imagePath}/level_BG/air.jpg`)),
         preloadImg(monster[0].image),
@@ -349,7 +354,8 @@ function initDrawer(canvas) {
         preloadImg(require(`${imagePath}/fist.png`)),
         preloadImg(require(`${imagePath}/boss.png`))
     ]).then(([bg, leg, body, head, weapon, hero, cloudOne, wave, wind, earthquak, fire, fist, boss]) => {
-        return new Drawer(canvas, bg, leg, body, head, weapon, hero, cloudOne, cloudOne, wave, wind, earthquak, fire, fist, boss);
+        return new Drawer(canvas, bg, leg, body, head, weapon, hero, cloudOne, cloudOne, wave, wind, earthquak, fire, fist, boss,
+            onGameStateChanged);
     })
 }
 
