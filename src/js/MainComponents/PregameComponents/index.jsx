@@ -1,12 +1,24 @@
 import React from 'react';
 import superman_music from '../../../music/supermen-glavnaya-tema.ogg';
+import { Redirect } from 'react-router-dom'
+import scarry_music from '../../../music/Scary-horror-music.mp3'
 class PreGame extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            aboutGame: '4340 year from the birth of Christ.',
+            aboutGame: '4340 A.D. ... As a result of the eruption of the megavolcano YellowStone, ' +
+            'the Poles ice caps have melted. Europe, once rich and ' +
+            'powerful, has turned into a chain of islands. One of them, ' +
+            'according to the scientists forecasts, will soon sink to the bottom.' +
+            'But what about the people?... Save yourself, people!... Flee to other ' +
+            'islands! But no one is waiting for you there ... To save, take over the ' +
+            'children will get enough food, and you will find peace. The fate of ' +
+            'the humanity depends on you! And ... may power be with you!',
             isPlaying: true,
-            formRender: ''
+            formRender: '',
+            scaryContainer: '',
+            information: 'Do you think it`s your fate??? Let`s try to see!',
+            redirect: false
         };
     }
 
@@ -35,17 +47,50 @@ class PreGame extends React.Component{
         }
     }
     createNewUser(){
+        const forDelete = document.querySelector('#about-container');
+        forDelete.remove()
+        this.scarryContainerInit();
+        setTimeout(()=>{this.typeWriter('#scarryContainer')},5000);
+        document.querySelector('#myAudio').src = scarry_music;
+    }
 
+    typeWriter(selector) {
+        let i = 0;
+        let txt = this.state.information;
+        let speed = 200;
+        function writer(){
+            const container = document.querySelector(selector);
+            if (i < txt.length) {
+                container.textContent += txt.charAt(i);
+                i++;
+                setTimeout(writer, speed);
+            }
+        }
+        writer();
+        this.setRedirect();
+    }
+
+    setRedirect(){
+        setTimeout(()=>{
+            this.setState({redirect: true});
+        },20000);
+    }
+    scarryContainerInit(){
+        const container = <div id='scarryContainer' className='scarryContainer'>
+            {this.state.informtion}
+        </div>;
+
+        this.setState({scaryContainer: container});
     }
 
     formRender(){
         const form = <form className='PreGame-form'>
-            <h3>Here a form</h3>
+            <h3>What's your name, young hero?</h3>
             <h4>First Name</h4>
             <input type="text" required/>
             <h4>Last Name</h4>
             <input type="text" required/>
-            <input onClick={this.createNewUser} type="submit" value="NEXT"/>
+            <button onClick={this.createNewUser.bind(this)} className='button' >{'next'.toUpperCase()}</button>
         </form>;
         setTimeout(()=>{
             this.setState({formRender: form});
@@ -56,18 +101,23 @@ class PreGame extends React.Component{
         this.formRender();
         this.reloadPageForAutoPlay();
     }
-    
     render(){
+        if (this.state.redirect === true) {
+            return <Redirect to='/game' />
+          }
         return <div id='PreGame' className='PreGame'>
         <audio id="myAudio" src={superman_music} autoPlay></audio>
-            <button className='audioButton PreGame-PlayButton' onClick={this.togglePlay.bind(this)}></button>
-            <img src={require('../../../img/PreGame/supermanFly.gif')} alt=""/>
-            <div id="titles">
-                <div id="titlecontent">
-	                <p>{this.state.aboutGame}</p>
+        <button className='audioButton PreGame-PlayButton' onClick={this.togglePlay.bind(this)}></button>
+            <div id='about-container' className="about-container">
+                <img src={require('../../../img/PreGame/supermanFly.gif')} alt=""/>
+                <div id="titles">
+                    <div id="titlecontent">
+	                    <p>{this.state.aboutGame}</p>
+                    </div>
                 </div>
+                {this.state.formRender}
             </div>
-            {this.state.formRender}
+            {this.state.scaryContainer}
         </div>
     }
 }

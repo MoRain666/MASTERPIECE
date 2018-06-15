@@ -21,7 +21,7 @@ class NotFound extends React.Component{
             }
         }
         writer();
-      }
+    }
     
     componentDidMount(){
         document.addEventListener('DOMContentLoaded', this.typeWriter.bind(this, '#NotFound'));

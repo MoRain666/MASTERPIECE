@@ -19,7 +19,7 @@ class Header extends React.Component{
                 </ul>
             </header>
             <div id='start' className='LandingPage-StartPlay'>
-                <Link className='button' to="/game">{'play now'.toUpperCase()}</Link>
+                <Link className='button' to="/pregame">{'play now'.toUpperCase()}</Link>
             </div>
         </div>
     }
