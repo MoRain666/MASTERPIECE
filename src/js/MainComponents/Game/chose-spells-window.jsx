@@ -20,12 +20,12 @@ class ChoseSpellsWindow extends React.Component {
         return () => {
             this.props.onAttackSelect(ATTACKS[ind].id)
         }
-    }
+    };
 
     render() {
 
         return (
-            <div className="riddle-window">
+            <div className="spells-window">
                 {ATTACKS.map((attack, ind) => {
                     return (
                         <div

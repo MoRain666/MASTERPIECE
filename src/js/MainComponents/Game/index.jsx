@@ -1,14 +1,15 @@
 import React from 'react';
 
 import ChoseSpellsWindow from "./chose-spells-window"
-import initDrawer  from "./GameAnimation";
-import { GAME_STATE_INITIAL } from './const'
+import RiddleWindow from "./riddleWindow"
+import initDrawer from "./GameAnimation";
+import {GAME_STATE_INITIAL} from './const'
 import './styles.css';
 
 class Game extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state ={
+        this.state = {
             choseSpellsWindowVisible: true,
         };
     }
@@ -36,7 +37,7 @@ class Game extends React.Component {
         this.drawer.startAttack(attackId);
     }
 
-    render(){
+    render() {
         return (
             <div className="GamePage">
                 {this.state.choseSpellsWindowVisible && (
@@ -44,7 +45,7 @@ class Game extends React.Component {
                         onAttackSelect={this.onAttackSelect}
                     />
                 )}
-
+                <RiddleWindow/>
                 <canvas
                     className="canvas"
                     ref={this.setCanvas}
