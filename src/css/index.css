@@ -2,6 +2,7 @@
 @import url('./LandingPage/LandingPage.css');
 @import url('./NotFound.css');
 @import url('./PreGame/PreGame.css');
+@import url('./riddles/allRiddles.css');
 html, body {
   height: 100%;
   width: 100%;

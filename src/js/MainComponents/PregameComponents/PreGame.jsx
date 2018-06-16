@@ -1,7 +1,7 @@
 import React from 'react';
 import superman_music from '../../../music/supermen-glavnaya-tema.ogg';
-import { Redirect } from 'react-router-dom'
-import scarry_music from '../../../music/Scary-horror-music.mp3'
+import { Redirect } from 'react-router-dom';
+import scarry_music from '../../../music/Scary-horror-music.mp3';
 class PreGame extends React.Component{
     constructor(props){
         super(props);
@@ -47,8 +47,18 @@ class PreGame extends React.Component{
         }
     }
     createNewUser(){
+        let users;
+        if(localStorage.length  > 0){
+             users = JSON.parse(localStorage.getItem('users'));
+        }else{
+             users = {};
+        }
+        let nameOfUser = `${document.getElementById("FirstName").value }_${document.getElementById("LastName").value}`;
+        users[`${nameOfUser}`] = 0;
+        let serialObject = JSON.stringify(users);
+        localStorage.setItem('users', serialObject);
         const forDelete = document.querySelector('#about-container');
-        forDelete.remove()
+        forDelete.remove();
         this.scarryContainerInit();
         setTimeout(()=>{this.typeWriter('#scarryContainer')},5000);
         document.querySelector('#myAudio').src = scarry_music;
@@ -84,23 +94,25 @@ class PreGame extends React.Component{
     }
 
     formRender(){
-        const form = <form className='PreGame-form'>
+        const form = <form onSubmit={this.createNewUser.bind(this)} className='PreGame-form'>
             <h3>What's your name, young hero?</h3>
             <h4>First Name</h4>
-            <input type="text" required/>
+            <input id='FirstName' type="text" required />
             <h4>Last Name</h4>
-            <input type="text" required/>
-            <button onClick={this.createNewUser.bind(this)} className='button' >{'next'.toUpperCase()}</button>
+            <input id='LastName' type="text" required />
+            <input className='button' value='NEXT' type='submit'/>
         </form>;
         setTimeout(()=>{
             this.setState({formRender: form});
             document.querySelector('#titles').remove();
-        }, 1000)
+        }, 50000)
     }
+
     componentDidMount(){
         this.formRender();
         this.reloadPageForAutoPlay();
     }
+
     render(){
         if (this.state.redirect === true) {
             return <Redirect to='/game' />
