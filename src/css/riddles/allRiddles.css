@@ -52,3 +52,40 @@ input:focus ,button:focus{
     color: white;
     background-color: black;
 }
+/*sequence*/
+.sequence{
+    width: inherit;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'anton' ;
+    font-size: 30px;
+    background-color: burlywood;
+}
+.sortableList{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.sortableList div{
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.sequence button{
+    background-color: black;
+    color: wheat;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
+}
+.sequence button:hover{
+    background-color: wheat;
+    color: black;
+}
