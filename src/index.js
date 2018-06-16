@@ -7,7 +7,9 @@ import Home from './js/MainComponents/home.jsx';
 import Game from './js/MainComponents/Game/index.jsx';
 import NotFound from './js/MainComponents/notfound.jsx';
 import PreGame from './js/MainComponents/PregameComponents/PreGame.jsx';
-import sequence from './js/MainComponents/riddles/sequence.jsx';
+import translator from './js/MainComponents/riddles/translator';
+import sequence from './js/MainComponents/riddles/sequence';
+import arithmetic from './js/MainComponents/riddles/arithmetic';
 
 ReactDOM.render(<Router>
     <Switch>

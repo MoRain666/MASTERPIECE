@@ -53,10 +53,11 @@ class PreGame extends React.Component{
         }else{
              users = {};
         }
-        let nameOfUser = `${document.getElementById("FirstName").value }_${document.getElementById("LastName").value}`;
+        let nameOfUser = `${document.getElementById("FirstName").value } ${document.getElementById("LastName").value}`;
         users[`${nameOfUser}`] = 0;
         let serialObject = JSON.stringify(users);
         localStorage.setItem('users', serialObject);
+        localStorage.setItem('currentUser', nameOfUser);
         const forDelete = document.querySelector('#about-container');
         forDelete.remove();
         this.scarryContainerInit();

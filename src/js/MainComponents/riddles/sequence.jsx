@@ -40,8 +40,15 @@ class sequence extends React.Component{
     solution(){
         if(this.arraysIdentical(this.state.items, this.state.trueSequence)){
             document.getElementById('sequence').classList.add('right');
+            localStorage.setItem('riddleProperty', 'right');
+            let nameOfUser = localStorage.getItem('currentUser');
+            let Newscrore = JSON.parse(localStorage.getItem('users'))[nameOfUser] + 1;
+            let users = JSON.parse(localStorage.getItem('users'));
+            users[nameOfUser] = Newscrore;
+            localStorage.setItem('users',JSON.stringify(users));
         }else{
             document.getElementById('sequence').classList.add('wrong');
+            localStorage.setItem('riddleProperty', 'wrong');
         }
         setTimeout(()=>{
             document.querySelector('#sequence').remove(); //удалить контейнер Насти,а не свой

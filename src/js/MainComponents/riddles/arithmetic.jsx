@@ -38,6 +38,11 @@ class arithmetic extends React.Component{
             document.getElementById('arithmetic').classList.add('right');
             document.getElementById('result').classList.add('right');
             document.getElementsByTagName('button')[0].classList.add('right');
+            let nameOfUser = localStorage.getItem('currentUser');
+            let Newscrore = JSON.parse(localStorage.getItem('users'))[nameOfUser] + 1;
+            let users = JSON.parse(localStorage.getItem('users'));
+            users[nameOfUser] = Newscrore;
+            localStorage.setItem('users',JSON.stringify(users));
         }else{
             localStorage.setItem('riddleProperty', 'wrong');
             document.getElementById('arithmetic').classList.add('wrong');
