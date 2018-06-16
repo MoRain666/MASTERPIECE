@@ -31,11 +31,11 @@ class Game extends React.Component {
         this.setState({
             choseSpellsWindowVisible: gameState === GAME_STATE_INITIAL,
         })
-    }
+    };
 
     onAttackSelect = (attackId) => {
         this.drawer.startAttack(attackId);
-    }
+    };
 
     render() {
         return (
@@ -45,7 +45,7 @@ class Game extends React.Component {
                         onAttackSelect={this.onAttackSelect}
                     />
                 )}
-                <RiddleWindow/>
+                {/*<RiddleWindow/>*/}
                 <canvas
                     className="canvas"
                     ref={this.setCanvas}

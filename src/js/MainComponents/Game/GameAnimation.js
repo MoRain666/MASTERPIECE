@@ -44,6 +44,7 @@ const WEAPON = [
     {image: require(`${imagePath}/Weapon/thor-mjolnir.png`)},
 ];
 let monster = [];
+let monsterName = '';
 
 function createMonster(legs, body, head, weapon) {
     let leg = legs.sort(() => 0.5 - Math.random()).slice(0, 1)[0];
@@ -55,6 +56,19 @@ function createMonster(legs, body, head, weapon) {
 }
 
 createMonster(LEGS, BODY, HEAD, WEAPON);
+
+const FIRST_NAME_MONSTER = ['Ugly', 'Stupid', 'Scary', 'Ill'];
+const SECOND_NAME_MONSTER = ['Orc', 'Troll', 'Ghoul', 'Freak'];
+const THIRD_NAME_MONSTER = ['Tom', 'Sasha', 'Max', 'Dany'];
+
+function createMonsterNAme(firsName, secondName, thirdName) {
+    let first = firsName.sort(() => 0.5 - Math.random()).slice(0, 1)[0];
+    let second = secondName.sort(() => 0.5 - Math.random()).slice(0, 1)[0];
+    let third = thirdName.sort(() => 0.5 - Math.random()).slice(0, 1)[0];
+    return monsterName = first + ' ' + second + ' ' + third;
+}
+
+createMonsterNAme(FIRST_NAME_MONSTER, SECOND_NAME_MONSTER, THIRD_NAME_MONSTER);
 
 
 const requestAnimFrame = window.requestAnimationFrame ||
@@ -137,7 +151,7 @@ class Drawer {
     }
 
     changeGameState(gameState) {
-        this.gameState = gameState
+        this.gameState = gameState;
         this.onGameStateChanged(gameState)
     }
 
@@ -238,6 +252,10 @@ class Drawer {
         }
 
         this.context.drawImage(this.weapon, 780, 350, 90, 90);
+
+
+        this.context.font = "30px Comic Sans MS";
+        this.context.fillText(monsterName, 680, 100);
 
 
         this.context.drawImage(this.hero, 65, this.heroAttr.y, 180, 230);
