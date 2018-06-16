@@ -95,7 +95,7 @@ class PreGame extends React.Component{
         setTimeout(()=>{
             this.setState({formRender: form});
             document.querySelector('#titles').remove();
-        }, 50000)
+        }, 1000)
     }
     componentDidMount(){
         this.formRender();
