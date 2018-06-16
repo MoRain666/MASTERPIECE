@@ -3,6 +3,7 @@ import React from 'react';
 import ChoseSpellsWindow from "./chose-spells-window"
 import RiddleWindow from "./riddleWindow"
 import initDrawer from "./GameAnimation";
+import openChose from "./assets/open-choose.png"
 import {GAME_STATE_INITIAL} from './const'
 import './styles.css';
 
@@ -40,12 +41,12 @@ class Game extends React.Component {
     render() {
         return (
             <div className="GamePage">
+                <img src={openChose} className='OpenChooseWindow'/>
                 {this.state.choseSpellsWindowVisible && (
                     <ChoseSpellsWindow
                         onAttackSelect={this.onAttackSelect}
                     />
                 )}
-                {/*<RiddleWindow/>*/}
                 <canvas
                     className="canvas"
                     ref={this.setCanvas}

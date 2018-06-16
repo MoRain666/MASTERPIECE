@@ -358,7 +358,7 @@ class Drawer {
 
 function initDrawer(canvas, onGameStateChanged) {
     return Promise.all([
-        preloadImg(require(`${imagePath}/level_BG/air.jpg`)),
+        preloadImg(require(`${imagePath}/level_BG/water.png`)),
         preloadImg(monster[0].image),
         preloadImg(monster[1].image),
         preloadImg(monster[2].image),

@@ -78,3 +78,20 @@
     align-items: center;
     animation: riddleWindow 0.35s;
 }
+
+.OpenChooseWindow {
+    position: absolute;
+    top: 300px;
+    left: 570px;
+    animation: choose-icon 5s linear infinite;
+}
+
+@keyframes choose-icon {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+
+    }
+}
