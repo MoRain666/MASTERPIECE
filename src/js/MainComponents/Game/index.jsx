@@ -1,7 +1,6 @@
 import React from 'react';
 
 import ChoseSpellsWindow from "./chose-spells-window"
-import RiddleWindow from "./riddleWindow"
 import initDrawer from "./GameAnimation";
 import openChose from "./assets/open-choose.png"
 import {GAME_STATE_INITIAL} from './const'
