@@ -42,7 +42,7 @@ class ChooseColor extends React.Component {
 
     render() {
         return <div id='choosecolor' className='choosecolor'>
-            <h3>Which is color this shape?</h3>
+            <h3>What is the color of this figure?</h3>
             <img src={this.CurrentShape.image}/>
             <input id='result' type="text" ref='result'/>
             <button onClick={this.solution.bind(this)}>Submit</button>

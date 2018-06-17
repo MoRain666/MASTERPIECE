@@ -1,5 +1,5 @@
 /*arithmetic*/
-.arithmetic{
+.arithmetic, .choosecolor{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,7 +75,8 @@ input:focus ,button:focus{
     margin-bottom: 10px;
     cursor: pointer;
 }
-.sequence button{
+.sequence button,
+.choosecolor button {
     background-color: black;
     color: wheat;
     border: 1px solid;
@@ -85,7 +86,23 @@ input:focus ,button:focus{
     font-size: 30px;
     cursor: pointer;
 }
-.sequence button:hover{
+.sequence button:hover,
+.choosecolor button:hover {
     background-color: wheat;
     color: black;
+}
+
+
+.choosecolor {
+    flex-direction: column;
+}
+
+.choosecolor * {
+    margin-bottom: 20px;
+}
+
+.choosecolor input {
+    width: 250px;
+    height: 50px;
+    font-size: 30px;
 }

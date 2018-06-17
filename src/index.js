@@ -16,7 +16,7 @@ ReactDOM.render(<Router>
     <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/pregame" component={PreGame} />
-        <Route path="/riddles" component={arithmetic} />
+        <Route path="/riddles" component={translator} />
         <Route path="/game" component={Game} />
         <Route component={NotFound} />
     </Switch>
