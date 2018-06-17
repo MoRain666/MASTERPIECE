@@ -3,6 +3,7 @@
 @import url('./NotFound.css');
 @import url('./PreGame/PreGame.css');
 @import url('./riddles/allRiddles.css');
+@import url('./Game/finalPage.css');
 html, body {
   height: 100%;
   width: 100%;

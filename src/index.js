@@ -7,13 +7,13 @@ import Home from './js/MainComponents/home.jsx';
 import Game from './js/MainComponents/Game/index.jsx';
 import NotFound from './js/MainComponents/notfound.jsx';
 import PreGame from './js/MainComponents/PregameComponents/PreGame.jsx';
-import ChooseColor from './js/MainComponents/riddles/choosecolour';
+import FinalPage from './js/MainComponents/finalPage';
 
 ReactDOM.render(<Router>
     <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/pregame" component={PreGame} />
-        <Route path="/riddles" component={ChooseColor} />
+        <Route path="/riddles" component={FinalPage} />
         <Route path="/game" component={Game} />
         <Route component={NotFound} />
     </Switch>
