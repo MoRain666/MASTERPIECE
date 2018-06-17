@@ -11,21 +11,6 @@ class Translator extends React.Component{
 
     solution(){
         this.props.onAnswer(this.verificationOfTranslation());
-        // if(this.verificationOfTranslation()){
-        //     document.getElementById('translator').classList.add('right');
-        //     localStorage.setItem('riddleProperty', 'right');
-        //     let nameOfUser = localStorage.getItem('currentUser');
-        //     let Newscrore = JSON.parse(localStorage.getItem('users'))[nameOfUser] + 1;
-        //     let users = JSON.parse(localStorage.getItem('users'));
-        //     users[nameOfUser] = Newscrore;
-        //     localStorage.setItem('users',JSON.stringify(users));
-        // }else{
-        //     document.getElementById('translator').classList.add('wrong');
-        //     localStorage.setItem('riddleProperty', 'wrong');
-        // }
-        // setTimeout(()=>{
-        //     document.querySelector('#translator').remove(); //удалить контейнер Насти,а не свой
-        // },2000);
     }
 
     verificationOfTranslation(){
