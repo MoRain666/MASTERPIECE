@@ -1,1 +1,1 @@
-https://powerful-chamber-32857.herokuapp.com/ ссылка на игру
+https://gameofmasterpiece.herokuapp.com/ ссылка на игру
