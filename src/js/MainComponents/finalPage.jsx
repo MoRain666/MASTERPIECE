@@ -2,12 +2,13 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import winImg from '../../img/FinalPage/win.jpg';
 import lostImg from '../../img/FinalPage/Death-of-Superman-comic.jpg';
+
 class FinalPage extends React.Component{
 
     constructor(props){
         super(props);
         this.state = {
-            gameState: this.props.result,
+            gameState: this.props.location.pathname === '/win' ? 'win' : '',
             imageOFSuperman: winImg,
             redirect:''
         };

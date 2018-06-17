@@ -13,6 +13,11 @@ ReactDOM.render(<Router>
     <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/pregame" component={PreGame} />
+<<<<<<< HEAD
+=======
+        <Route path="/win" component={FinalPage} />
+        <Route path="/lost" component={FinalPage} />
+>>>>>>> 968296d39158d3088ae792186458b5ed9f8dd085
         <Route path="/game" component={Game} />
         <Route path="/score" component={Score} />
         <Route component={NotFound} />

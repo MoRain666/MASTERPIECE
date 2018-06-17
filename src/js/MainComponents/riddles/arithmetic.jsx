@@ -48,7 +48,7 @@ class Arithmetic extends React.Component{
     render(){
         return <div id='arithmetic' className='arithmetic' >
             <h3>{this.state.firstNumber} {this.state.currentOperator} {this.state.lastNumber} =</h3>
-            <input id='result' type="number" ref='result' />
+            <input id='result' type="number" ref='result' autoFocus />
             <button id='submitButton' onClick={this.solution.bind(this)}>Submit</button>
         </div>
     }

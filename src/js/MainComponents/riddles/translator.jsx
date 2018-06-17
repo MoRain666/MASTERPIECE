@@ -49,7 +49,7 @@ class Translator extends React.Component{
         return <div id='translator' className='translator'>
             <h2>Translate the word into Russian</h2>
             <div className='translatorWord'>{this.state.currentWord}</div>
-            <input id='result' type="text" ref='word'/>
+            <input id='result' type="text" autoFocus ref='word'/>
             <button id='submitButton' onClick={this.solution.bind(this)}>Submit</button>
         </div>
     }
