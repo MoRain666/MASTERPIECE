@@ -59,9 +59,9 @@ class translator extends React.Component{
     }
 
     render(){
-        return <div id='translator'>
+        return <div id='translator' className='translator'>
             <h2>Translate the word into Russian</h2>
-            <div>{this.state.currentWord}</div>
+            <div className='translatorWord'>{this.state.currentWord}</div>
             <input id='result' type="text" ref='word'/>
             <button id='submitButton' onClick={this.solution.bind(this)}>Submit</button>
         </div>
