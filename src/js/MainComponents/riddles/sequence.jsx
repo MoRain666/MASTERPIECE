@@ -2,8 +2,8 @@ import React from 'react';
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 class sequence extends React.Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
             trueSequence:''
@@ -38,21 +38,23 @@ class sequence extends React.Component{
     }
 
     solution(){
-        if(this.arraysIdentical(this.state.items, this.state.trueSequence)){
-            document.getElementById('sequence').classList.add('right');
-            localStorage.setItem('riddleProperty', 'right');
-            let nameOfUser = localStorage.getItem('currentUser');
-            let Newscrore = JSON.parse(localStorage.getItem('users'))[nameOfUser] + 1;
-            let users = JSON.parse(localStorage.getItem('users'));
-            users[nameOfUser] = Newscrore;
-            localStorage.setItem('users',JSON.stringify(users));
-        }else{
-            document.getElementById('sequence').classList.add('wrong');
-            localStorage.setItem('riddleProperty', 'wrong');
-        }
-        setTimeout(()=>{
-            document.querySelector('#sequence').remove(); //удалить контейнер Насти,а не свой
-        },2000);
+        this.props.onAnswer(this.arraysIdentical(this.state.items, this.state.trueSequence));
+
+        // if(this.arraysIdentical(this.state.items, this.state.trueSequence)){
+        //     document.getElementById('sequence').classList.add('right');
+        //     localStorage.setItem('riddleProperty', 'right');
+        //     let nameOfUser = localStorage.getItem('currentUser');
+        //     let Newscrore = JSON.parse(localStorage.getItem('users'))[nameOfUser] + 1;
+        //     let users = JSON.parse(localStorage.getItem('users'));
+        //     users[nameOfUser] = Newscrore;
+        //     localStorage.setItem('users',JSON.stringify(users));
+        // }else{
+        //     document.getElementById('sequence').classList.add('wrong');
+        //     localStorage.setItem('riddleProperty', 'wrong');
+        // }
+        // setTimeout(()=>{
+        //     document.querySelector('#sequence').remove(); //удалить контейнер Насти,а не свой
+        // },2000);
     }
 
     componentDidMount(){

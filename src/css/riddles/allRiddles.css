@@ -1,22 +1,28 @@
 /*arithmetic*/
-.arithmetic, .choosecolor, .translator{
+.arithmetic, .choosecolor, .translator {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: inherit;
-    height: inherit;
+    width: 900px;
+    height: 600px;
+    position: absolute;
+    z-index: 5;
     color: black;
     font-family: 'anton';
     font-size: 60px;
     background-color: burlywood;
+
 }
-.right{
+
+.right {
     background-color: green !important;
 }
-.wrong{
+
+.wrong {
     background-color: brown !important;
 }
-.arithmetic input{
+
+.arithmetic input {
     margin-left: 2%;
     padding: 20px 10px;
     width: 10%;
@@ -28,17 +34,20 @@
     text-align: center;
     height: 45px;
 }
-input[type=number]::-webkit-inner-spin-button { 
+
+input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
-    width:8px;
+    width: 8px;
     color: #333;
-    text-align:center;
+    text-align: center;
     outline: none;
 }
-input:focus ,button:focus{
+
+input:focus, button:focus {
     outline: none;
 }
-.arithmetic button{
+
+.arithmetic button {
     text-align: center;
     margin-left: 2%;
     font-family: 'anton';
@@ -48,33 +57,40 @@ input:focus ,button:focus{
     background-color: burlywood;
     cursor: pointer;
 }
-.arithmetic button:hover{
+
+.arithmetic button:hover {
     color: white;
     background-color: black;
 }
+
 /*sequence*/
-.sequence{
-    width: inherit;
-    height: inherit;
+.sequence {
+    width: 900px;
+    height: 600px;
+    position: absolute;
+    z-index: 5;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-family: 'anton' ;
+    font-family: 'anton';
     font-size: 30px;
     background-color: burlywood;
 }
-.sortableList{
+
+.sortableList {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
 }
-.sortableList div{
+
+.sortableList div {
     margin-bottom: 10px;
     cursor: pointer;
 }
+
 .sequence button,
 .choosecolor button,
 .translator button {
@@ -87,13 +103,13 @@ input:focus ,button:focus{
     font-size: 30px;
     cursor: pointer;
 }
+
 .sequence button:hover,
 .choosecolor button:hover,
 .translator button:hover {
     background-color: wheat;
     color: black;
 }
-
 
 .choosecolor, .translator {
     flex-direction: column;
@@ -116,3 +132,4 @@ input:focus ,button:focus{
     padding: 30px;
     color: #00005e;
 }
+

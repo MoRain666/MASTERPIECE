@@ -1,8 +1,8 @@
 import React from 'react';
 class arithmetic extends React.Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             operators:['+', '-', '*'],
             firstNumber:'',
@@ -42,25 +42,27 @@ class arithmetic extends React.Component{
     }
 
     solution(){
-        if(this.refs.result.value == this.state.result){
-            localStorage.setItem('riddleProperty', 'right');
-            document.getElementById('arithmetic').classList.add('right');
-            document.getElementById('result').classList.add('right');
-            document.getElementsByTagName('button')[0].classList.add('right');
-            let nameOfUser = localStorage.getItem('currentUser');
-            let Newscrore = JSON.parse(localStorage.getItem('users'))[nameOfUser] + 1;
-            let users = JSON.parse(localStorage.getItem('users'));
-            users[nameOfUser] = Newscrore;
-            localStorage.setItem('users',JSON.stringify(users));
-        }else{
-            localStorage.setItem('riddleProperty', 'wrong');
-            document.getElementById('arithmetic').classList.add('wrong');
-            document.getElementById('result').classList.add('wrong');
-            document.getElementsByTagName('button')[0].classList.add('wrong');
-        }
-        setTimeout(()=>{
-            document.querySelector('#arithmetic').remove(); //удалить контейнер Насти,а не свой
-        },2000);
+
+        this.props.onAnswer(this.refs.result.value.toString() === this.state.result.toString());
+        // if(this.refs.result.value == this.state.result){
+        //     localStorage.setItem('riddleProperty', 'right');
+        //     document.getElementById('arithmetic').classList.add('right');
+        //     document.getElementById('result').classList.add('right');
+        //     document.getElementsByTagName('button')[0].classList.add('right');
+        //     let nameOfUser = localStorage.getItem('currentUser');
+        //     let Newscrore = JSON.parse(localStorage.getItem('users'))[nameOfUser] + 1;
+        //     let users = JSON.parse(localStorage.getItem('users'));
+        //     users[nameOfUser] = Newscrore;
+        //     localStorage.setItem('users',JSON.stringify(users));
+        // }else{
+        //     localStorage.setItem('riddleProperty', 'wrong');
+        //     document.getElementById('arithmetic').classList.add('wrong');
+        //     document.getElementById('result').classList.add('wrong');
+        //     document.getElementsByTagName('button')[0].classList.add('wrong');
+        // }
+        // setTimeout(()=>{
+        //     document.querySelector('#arithmetic').remove(); //удалить контейнер Насти,а не свой
+        // },2000);
     }
 
     render(){

@@ -1,4 +1,4 @@
-import {ATTACK_FIRE, ATTACK_GROUND, ATTACK_WATER, ATTACK_WIND, GAME_STATE_ATTACK, GAME_STATE_INITIAL} from './const'
+import {ATTACK_FIRE, ATTACK_GROUND, ATTACK_WATER, ATTACK_WIND, GAME_STATE_ATTACK, GAME_STATE_INITIAL, GAME_STATE_LOSE, GAME_STATE_WIN} from './const'
 
 const imagePath = './assets';
 
@@ -112,10 +112,7 @@ class Drawer {
         this.bgLevel4 = bgLevel4;
         this.bgLevel5 = bgLevel5;
         this.draw = this.draw.bind(this);
-        this.speed = 1;
         this.scroll = 0;
-        this.imageData = {};
-        this.directionCloud = true;
         this.gameState = GAME_STATE_INITIAL;
         this.cloudOneAttr = {
             x: 0,
@@ -188,6 +185,8 @@ class Drawer {
                 x: 0,
                 sprite: this.wave,
             }
+        } else {
+            this.drawMonsterAttack();
         }
     }
 
@@ -207,8 +206,9 @@ class Drawer {
             this.bgAttr.x2 = -900;
         }
 
-        this.context.fillRect(30, 30, this.helthWidthHero, 30);
-        this.context.fillRect(670, 30, this.helthWidthMonster, 30);
+        this.drawHealthBar(30, 30, this.helthWidthHero);
+        this.drawHealthBar(670, 30, this.helthWidthMonster);
+
 
         this.context.fillStyle = '#AB0000';
 
@@ -236,6 +236,7 @@ class Drawer {
 
         this.context.font = "30px Comic Sans MS";
         this.context.fillText(monsterName, 680, 100);
+        this.context.fillText(localStorage.getItem('currentUser'), 30, 100);
 
 
         this.context.drawImage(this.hero, 65, this.heroAttr.y, 180, 230);
@@ -263,13 +264,16 @@ class Drawer {
 
     drawAttack() {
         if (this.attackAttrs.id === ATTACK_WIND) {
-            this.drawWindAttack(this.attackAttrs.drawAttrs)
+            this.drawWindAttack(this.attackAttrs.drawAttrs);
+            this.drawHelthBarMonster(10);
         } else if (this.attackAttrs.id === ATTACK_FIRE) {
             this.drawFireAttack(this.attackAttrs.drawAttrs)
         } else if (this.attackAttrs.id === ATTACK_GROUND) {
             this.drawEarthquakeAttack(this.attackAttrs.drawAttrs)
         } else if (this.attackAttrs.id === ATTACK_WATER) {
             this.drawWaveAttack(this.attackAttrs.drawAttrs)
+        } else {
+            this.drawMonsterAttack();
         }
         this.attackAttrs.drawCount -= 1;
         if (this.attackAttrs.drawCount <= 0) {
@@ -366,18 +370,37 @@ class Drawer {
         this.fistX -= 10;
     }
 
-    drawHelthBarHero(num) {
-        this.helthWidthHero -= num * 2;
+    decHeroHealth() {
+        this.helthWidthHero -= 100
         if (this.helthWidthHero <= 0) {
-
+            this.changeGameState(GAME_STATE_LOSE)
         }
     }
 
-    drawHelthBarMonster(num) {
-        this.helthWidthMonster -= num * 2;
-        if (this.helthWidthMonster <= 0) {
-
+    decMonsterHealth() {
+        this.helthWidthMonster -= 100
+        if (this.helthWidthHero <= 0) {
+            this.changeGameState(GAME_STATE_WIN)
         }
+    }
+
+    // drawHelthBarHero(num) {
+    //     this.helthWidthHero = num * 2;
+    //     if (this.helthWidthHero <= 0) {
+    //
+    //     }
+    // }
+    //
+    // drawHelthBarMonster(num) {
+    //     this.helthWidthMonster = num * 2;
+    //     if (this.helthWidthMonster <= 0) {
+    //         this.levelId += 1;
+    //     }
+    // }
+    //
+    drawHealthBar(x, y, val) {
+        this.context.fillRect(x, y, val, 30);
+
     }
 }
 

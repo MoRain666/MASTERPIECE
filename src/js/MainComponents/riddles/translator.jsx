@@ -2,29 +2,30 @@ import React from 'react';
 import { dictionary } from './dictionary';
 class translator extends React.Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             currentWord:''
         };
     }
 
     solution(){
-        if(this.verificationOfTranslation()){
-            document.getElementById('translator').classList.add('right');
-            localStorage.setItem('riddleProperty', 'right');
-            let nameOfUser = localStorage.getItem('currentUser');
-            let Newscrore = JSON.parse(localStorage.getItem('users'))[nameOfUser] + 1;
-            let users = JSON.parse(localStorage.getItem('users'));
-            users[nameOfUser] = Newscrore;
-            localStorage.setItem('users',JSON.stringify(users));
-        }else{
-            document.getElementById('translator').classList.add('wrong');
-            localStorage.setItem('riddleProperty', 'wrong');
-        }
-        setTimeout(()=>{
-            document.querySelector('#translator').remove(); //удалить контейнер Насти,а не свой
-        },2000);
+        this.props.onAnswer(this.verificationOfTranslation());
+        // if(this.verificationOfTranslation()){
+        //     document.getElementById('translator').classList.add('right');
+        //     localStorage.setItem('riddleProperty', 'right');
+        //     let nameOfUser = localStorage.getItem('currentUser');
+        //     let Newscrore = JSON.parse(localStorage.getItem('users'))[nameOfUser] + 1;
+        //     let users = JSON.parse(localStorage.getItem('users'));
+        //     users[nameOfUser] = Newscrore;
+        //     localStorage.setItem('users',JSON.stringify(users));
+        // }else{
+        //     document.getElementById('translator').classList.add('wrong');
+        //     localStorage.setItem('riddleProperty', 'wrong');
+        // }
+        // setTimeout(()=>{
+        //     document.querySelector('#translator').remove(); //удалить контейнер Насти,а не свой
+        // },2000);
     }
 
     verificationOfTranslation(){
