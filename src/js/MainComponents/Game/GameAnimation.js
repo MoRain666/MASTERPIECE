@@ -265,7 +265,6 @@ class Drawer {
     drawAttack() {
         if (this.attackAttrs.id === ATTACK_WIND) {
             this.drawWindAttack(this.attackAttrs.drawAttrs);
-            this.drawHelthBarMonster(10);
         } else if (this.attackAttrs.id === ATTACK_FIRE) {
             this.drawFireAttack(this.attackAttrs.drawAttrs)
         } else if (this.attackAttrs.id === ATTACK_GROUND) {
@@ -371,33 +370,19 @@ class Drawer {
     }
 
     decHeroHealth() {
-        this.helthWidthHero -= 100
+        this.helthWidthHero -= 100;
         if (this.helthWidthHero <= 0) {
             this.changeGameState(GAME_STATE_LOSE)
         }
     }
 
     decMonsterHealth() {
-        this.helthWidthMonster -= 100
+        this.helthWidthMonster -= 100;
         if (this.helthWidthHero <= 0) {
             this.changeGameState(GAME_STATE_WIN)
         }
     }
 
-    // drawHelthBarHero(num) {
-    //     this.helthWidthHero = num * 2;
-    //     if (this.helthWidthHero <= 0) {
-    //
-    //     }
-    // }
-    //
-    // drawHelthBarMonster(num) {
-    //     this.helthWidthMonster = num * 2;
-    //     if (this.helthWidthMonster <= 0) {
-    //         this.levelId += 1;
-    //     }
-    // }
-    //
     drawHealthBar(x, y, val) {
         this.context.fillRect(x, y, val, 30);
 
