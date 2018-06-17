@@ -27,9 +27,18 @@ class arithmetic extends React.Component{
         let result = eval(`${firstNumber}${operator}${lastNumber}`);
         this.setState({result: result});
     }
+    initEnterEvent(){
+        const input = document.getElementById('result');
+        input.addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+                document.getElementById("submitButton").click();
+            }
+        });
+    }
 
     componentDidMount(){
         this.exampleGeneration();
+        this.initEnterEvent();
     }
 
     solution(){
@@ -58,7 +67,7 @@ class arithmetic extends React.Component{
         return <div id='arithmetic' className='arithmetic' >
             <h3>{this.state.firstNumber} {this.state.currentOperator} {this.state.lastNumber} =</h3>
             <input id='result' type="number" ref='result' />
-            <button onClick={this.solution.bind(this)}>Submit</button>
+            <button id='submitButton' onClick={this.solution.bind(this)}>Submit</button>
         </div>
     }
 }

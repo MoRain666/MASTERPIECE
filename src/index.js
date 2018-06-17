@@ -10,12 +10,13 @@ import PreGame from './js/MainComponents/PregameComponents/PreGame.jsx';
 import translator from './js/MainComponents/riddles/translator';
 import sequence from './js/MainComponents/riddles/sequence';
 import arithmetic from './js/MainComponents/riddles/arithmetic';
+import ChooseColor from './js/MainComponents/riddles/choosecolour';
 
 ReactDOM.render(<Router>
     <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/pregame" component={PreGame} />
-        <Route path="/riddles" component={sequence} />
+        <Route path="/riddles" component={arithmetic} />
         <Route path="/game" component={Game} />
         <Route component={NotFound} />
     </Switch>
