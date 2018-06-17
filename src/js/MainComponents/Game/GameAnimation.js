@@ -1,5 +1,4 @@
 import {
-    GAME_NEXT_LEVEL,
     ATTACK_FIRE,
     ATTACK_GROUND,
     ATTACK_WATER,

@@ -3,15 +3,9 @@ import React from 'react';
 import {
     ATTACK_FIRE,
     ATTACK_GROUND,
-    ATTACK_MONSTER,
     ATTACK_WATER,
     ATTACK_WIND,
-    GAME_STATE_INITIAL,
-    ARITHMETIC,
-    CHOOSE_COLOUR,
-    SEQUENCE,
-    TRANSLATOR
-} from './const'
+} from './const';
 import Arithmetic from "../riddles/arithmetic";
 import Choosecolour from "../riddles/choosecolour";
 import Sequence from "../riddles/sequence";

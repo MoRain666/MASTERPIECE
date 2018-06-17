@@ -2,14 +2,14 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 
 
-import ChoseSpellsWindow from "./chose-spells-window"
+import ChoseSpellsWindow from "./chose-spells-window";
 import initDrawer from "./GameAnimation";
 
-import openChose from "./assets/open-choose.png"
-import {ATTACK_MONSTER, GAME_NEXT_LEVEL, GAME_STATE_LOSE, GAME_STATE_WIN,} from './const'
+import openChose from "./assets/open-choose.png";
+import {ATTACK_MONSTER, GAME_STATE_LOSE, GAME_STATE_WIN,} from './const';
 import './styles.css';
-import music from '../../../music/bg_music.wav'
-import RiddleWindow from './RiddleWindow'
+import music from '../../../music/bg_music.wav';
+import RiddleWindow from './RiddleWindow';
 
 class Game extends React.Component {
     constructor(props) {
@@ -96,7 +96,7 @@ class Game extends React.Component {
                         onAttackSelect={this.onAttackSelect}
                     />
                 )}
-                {/*<audio ref="audio_tag" src={music} autoPlay loop={music}/>*/}
+                {<audio ref="audio_tag" src={music} autoPlay loop={music}/>}
                 <canvas
                     className="canvas"
                     ref={this.setCanvas}
