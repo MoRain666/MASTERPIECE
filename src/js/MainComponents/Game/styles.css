@@ -81,8 +81,7 @@
 
 .OpenChooseWindow {
     position: absolute;
-    top: 300px;
-    left: 570px;
+    bottom: calc(50% - 300px);
     animation: choose-icon 5s linear infinite;
 }
 

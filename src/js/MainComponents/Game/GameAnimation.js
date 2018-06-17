@@ -1,61 +1,80 @@
-import {ATTACK_FIRE, ATTACK_GROUND, ATTACK_WATER, ATTACK_WIND, GAME_STATE_ATTACK, GAME_STATE_INITIAL, GAME_STATE_LOSE, GAME_STATE_WIN} from './const'
+import {
+    GAME_NEXT_LEVEL,
+    ATTACK_FIRE,
+    ATTACK_GROUND,
+    ATTACK_WATER,
+    ATTACK_WIND,
+    GAME_STATE_ATTACK,
+    GAME_STATE_INITIAL,
+    GAME_STATE_LOSE,
+    GAME_STATE_WIN
+} from './const'
 
 const imagePath = './assets';
 
 
 const LEGS = [
-    {image: require(`${imagePath}/legs/boots.png`)},
-    {image: require(`${imagePath}/legs/gree-legs.png`)},
-    {image: require(`${imagePath}/legs/pink-legs.png`)},
-    {image: require(`${imagePath}/legs/round-legs.png`)},
-    {image: require(`${imagePath}/legs/blue-legs.png`)},
-    {image: require(`${imagePath}/legs/two-legs.png`)},
-    {image: require(`${imagePath}/legs/yellow-legs.png`)},
+    require(`${imagePath}/legs/boots.png`),
+    require(`${imagePath}/legs/gree-legs.png`),
+    require(`${imagePath}/legs/pink-legs.png`),
+    require(`${imagePath}/legs/round-legs.png`),
+    require(`${imagePath}/legs/blue-legs.png`),
+    require(`${imagePath}/legs/two-legs.png`),
+    require(`${imagePath}/legs/yellow-legs.png`),
 ];
 
 
 const BODY = [
-    {image: require(`${imagePath}/Body/01.png`)},
-    {image: require(`${imagePath}/Body/1.2.png`)},
-    {image: require(`${imagePath}/Body/1.3.png`)},
-    {image: require(`${imagePath}/Body/1.4.png`)},
-    {image: require(`${imagePath}/Body/1.5.png`)},
-    {image: require(`${imagePath}/Body/1.6.png`)},
-    {image: require(`${imagePath}/Body/1.7.png`)},
+    require(`${imagePath}/Body/01.png`),
+    require(`${imagePath}/Body/1.2.png`),
+    require(`${imagePath}/Body/1.3.png`),
+    require(`${imagePath}/Body/1.4.png`),
+    require(`${imagePath}/Body/1.5.png`),
+    require(`${imagePath}/Body/1.6.png`),
+    require(`${imagePath}/Body/1.7.png`),
 ];
 
 const HEAD = [
-    {image: require(`${imagePath}/head/devil-head.png`)},
-    {image: require(`${imagePath}/head/ghost.png`)},
-    {image: require(`${imagePath}/head/green-head.png`)},
-    {image: require(`${imagePath}/head/hood.png`)},
-    {image: require(`${imagePath}/head/monster-head.png`)},
-    {image: require(`${imagePath}/head/purple-head.png`)},
-    {image: require(`${imagePath}/head/zombie.png`)},
+    require(`${imagePath}/head/devil-head.png`),
+    require(`${imagePath}/head/ghost.png`),
+    require(`${imagePath}/head/green-head.png`),
+    require(`${imagePath}/head/hood.png`),
+    require(`${imagePath}/head/monster-head.png`),
+    require(`${imagePath}/head/purple-head.png`),
+    require(`${imagePath}/head/zombie.png`),
 ];
 
 const WEAPON = [
-    {image: require(`${imagePath}/Weapon/axe.png`)},
-    {image: require(`${imagePath}/Weapon/axe-grey.png`)},
-    {image: require(`${imagePath}/Weapon/cudgel.png`)},
-    {image: require(`${imagePath}/Weapon/silver-sword.png`)},
-    {image: require(`${imagePath}/Weapon/spear.png`)},
-    {image: require(`${imagePath}/Weapon/sword.png`)},
-    {image: require(`${imagePath}/Weapon/thor-mjolnir.png`)},
+    require(`${imagePath}/Weapon/axe.png`),
+    require(`${imagePath}/Weapon/axe-grey.png`),
+    require(`${imagePath}/Weapon/cudgel.png`),
+    require(`${imagePath}/Weapon/silver-sword.png`),
+    require(`${imagePath}/Weapon/spear.png`),
+    require(`${imagePath}/Weapon/sword.png`),
+    require(`${imagePath}/Weapon/thor-mjolnir.png`),
 ];
-let monster = [];
+
 let monsterName = '';
 
-function createMonster(legs, body, head, weapon) {
-    let leg = legs.sort(() => 0.5 - Math.random()).slice(0, 1)[0];
-    let trunk = body.sort(() => 0.5 - Math.random()).slice(0, 1)[0];
-    let headMonster = head.sort(() => 0.5 - Math.random()).slice(0, 1)[0];
-    let weaponMonster = weapon.sort(() => 0.5 - Math.random()).slice(0, 1)[0];
-    monster.push(leg, trunk, headMonster, weaponMonster);
-    return monster;
+function createMonster() {
+    let leg = LEGS.sort(() => 0.5 - Math.random()).slice(0, 1)[0];
+    let body = BODY.sort(() => 0.5 - Math.random()).slice(0, 1)[0];
+    let head = HEAD.sort(() => 0.5 - Math.random()).slice(0, 1)[0];
+    let weapon = WEAPON.sort(() => 0.5 - Math.random()).slice(0, 1)[0];
+    // const monster = []
+    // monster.push(leg, trunk, headMonster, weaponMonster);
+
+    return Promise.all([
+        preloadImg(leg),
+        preloadImg(body),
+        preloadImg(head),
+        preloadImg(weapon),
+    ]).then(([leg, body, head, weapon]) => ({
+        leg, body, head, weapon
+    }))
+
 }
 
-createMonster(LEGS, BODY, HEAD, WEAPON);
 
 const FIRST_NAME_MONSTER = ['Ugly', 'Stupid', 'Scary', 'Ill'];
 const SECOND_NAME_MONSTER = ['Orc', 'Troll', 'Ghoul', 'Freak'];
@@ -97,12 +116,8 @@ function preloadImg(src) {
 
 class Drawer {
 
-    constructor(canvas, bgLevel1, bgLevel2, bgLevel3, bgLevel4, bgLevel5, leg, body, head, weapon, hero, cloudOne, cloudTwo, wave, wind, earthquak, fire, fist, boss, onGameStateChanged) {
+    constructor(canvas, monster, bgLevel1, bgLevel2, bgLevel3, bgLevel4, bgLevel5, hero, cloudOne, cloudTwo, wave, wind, earthquak, fire, fist, boss, onGameStateChanged) {
         this.context = canvas.getContext('2d');
-        this.leg = leg;
-        this.head = head;
-        this.body = body;
-        this.weapon = weapon;
         this.hero = hero;
         this.cloudOne = cloudOne;
         this.cloudTwo = cloudTwo;
@@ -135,6 +150,10 @@ class Drawer {
             x1: 0,
             x2: -900
         };
+        this.bossAttr = {
+            y: 160,
+            moveDown: true
+        };
         this.helthWidthHero = 200;
         this.helthWidthMonster = 200;
         this.wave = wave;
@@ -143,10 +162,11 @@ class Drawer {
         this.earthquak = earthquak;
         this.fire = fire;
         this.fist = fist;
-        this.fistX = 600;
         this.boss = boss;
         this.onGameStateChanged = onGameStateChanged;
-        this.levelId = 3;
+        this.levelId = 1;
+        this.monster = monster;
+        this.bosLevel = false;
     }
 
     changeGameState(gameState) {
@@ -186,15 +206,17 @@ class Drawer {
                 sprite: this.wave,
             }
         } else {
-            this.drawMonsterAttack();
+            this.attackAttrs.drawCount = 25;
+            this.attackAttrs.drawAttrs = {
+                x: 600,
+                sprite: this.fist,
+            }
         }
     }
 
     draw() {
         this.context.clearRect(0, 0, 900, 600);
-        //
-        // this.context.drawImage(this.bgLevel1, this.bgAttr.x1, 0);
-        // this.context.drawImage(this.bgLevel1, this.bgAttr.x2, 0);
+
         this.drawLevelBackgroundandAttr();
 
         this.bgAttr.x1 += 1;
@@ -209,32 +231,10 @@ class Drawer {
         this.drawHealthBar(30, 30, this.helthWidthHero);
         this.drawHealthBar(670, 30, this.helthWidthMonster);
 
-
         this.context.fillStyle = '#AB0000';
 
 
-
-        this.context.drawImage(this.leg, 680, 430, 120, 100);
-        this.context.drawImage(this.body, 670, 320, 140, 140);
-
-
-        this.context.drawImage(this.head, 660, this.headAttr.y);
-        if (this.headAttr.moveDown) {
-            this.headAttr.y += 0.3;
-            if (this.headAttr.y >= 240) {
-                this.headAttr.moveDown = false;
-            }
-        } else {
-            this.headAttr.y -= 0.3;
-            if (this.headAttr.y <= 220) {
-                this.headAttr.moveDown = true;
-            }
-        }
-
-        this.context.drawImage(this.weapon, 780, 350, 90, 90);
-
-
-        this.context.font = "30px Comic Sans MS";
+        this.context.font = "25px Comic Sans MS";
         this.context.fillText(monsterName, 680, 100);
         this.context.fillText(localStorage.getItem('currentUser'), 30, 100);
 
@@ -252,7 +252,11 @@ class Drawer {
             }
         }
 
-        // this.context.drawImage(this.boss, 350, 100, 500, 500);
+        if (this.bosLevel) {
+            this.drawBoss();
+        } else {
+            this.drawMonster();
+        }
 
         if (this.gameState === GAME_STATE_ATTACK) {
             this.drawAttack()
@@ -260,6 +264,41 @@ class Drawer {
 
 
         setTimeout(() => requestAnimFrame(this.draw), 1000 / 60);
+    }
+
+    drawMonster() {
+        this.context.drawImage(this.monster.leg, 680, 430, 120, 100);
+        this.context.drawImage(this.monster.body, 670, 320, 140, 140);
+
+        this.context.drawImage(this.monster.head, 660, this.headAttr.y);
+        if (this.headAttr.moveDown) {
+            this.headAttr.y += 0.3;
+            if (this.headAttr.y >= 240) {
+                this.headAttr.moveDown = false;
+            }
+        } else {
+            this.headAttr.y -= 0.3;
+            if (this.headAttr.y <= 220) {
+                this.headAttr.moveDown = true;
+            }
+        }
+
+        this.context.drawImage(this.monster.weapon, 780, 350, 90, 90);
+    }
+
+    drawBoss() {
+        this.context.drawImage(this.boss, 450, this.bossAttr.y, 450, 450);
+        if (this.bossAttr.moveDown) {
+            this.bossAttr.y += 0.5;
+            if (this.bossAttr.y >= 180) {
+                this.bossAttr.moveDown = false;
+            }
+        } else {
+            this.bossAttr.y -= 0.5;
+            if (this.bossAttr.y <= 150) {
+                this.bossAttr.moveDown = true;
+            }
+        }
     }
 
     drawAttack() {
@@ -272,7 +311,7 @@ class Drawer {
         } else if (this.attackAttrs.id === ATTACK_WATER) {
             this.drawWaveAttack(this.attackAttrs.drawAttrs)
         } else {
-            this.drawMonsterAttack();
+            this.drawMonsterAttack(this.attackAttrs.drawAttrs);
         }
         this.attackAttrs.drawCount -= 1;
         if (this.attackAttrs.drawCount <= 0) {
@@ -364,53 +403,69 @@ class Drawer {
         }
     }
 
-    drawMonsterAttack() {
-        this.context.drawImage(this.fist, this.fistX, 350, 250, 150);
-        this.fistX -= 10;
+    drawMonsterAttack(attrs) {
+        this.context.drawImage(attrs.sprite, attrs.x, 350, 250, 150);
+        if (attrs.x <= -200) {
+            attrs.x = 600;
+        } else {
+            attrs.x -= 30;
+        }
     }
 
     decHeroHealth() {
         this.helthWidthHero -= 100;
         if (this.helthWidthHero <= 0) {
-            this.changeGameState(GAME_STATE_LOSE)
+            this.changeGameState(GAME_STATE_LOSE);
         }
     }
 
     decMonsterHealth() {
         this.helthWidthMonster -= 100;
-        if (this.helthWidthHero <= 0) {
-            this.changeGameState(GAME_STATE_WIN)
+        if (this.helthWidthMonster <= 0) {
+            this.levelId += 1;
+            if (this.levelId > 5) {
+                this.changeGameState(GAME_STATE_WIN);
+            } else if (this.levelId === 5) {
+                this.bosLevel = true;
+                this.helthWidthMonster = 200;
+                this.helthWidthHero = 200;
+            } else {
+                this.helthWidthMonster = 200;
+                this.helthWidthHero = 200;
+                createMonster().then(monster => this.monster = monster);
+            }
         }
     }
 
     drawHealthBar(x, y, val) {
         this.context.fillRect(x, y, val, 30);
-
     }
 }
 
 
 function initDrawer(canvas, onGameStateChanged) {
     return Promise.all([
+        createMonster(),
         preloadImg(require(`${imagePath}/level_BG/air.jpg`)),
         preloadImg(require(`${imagePath}/level_BG/fire.png`)),
         preloadImg(require(`${imagePath}/level_BG/ground.png`)),
         preloadImg(require(`${imagePath}/level_BG/water.png`)),
         preloadImg(require(`${imagePath}/level_BG/boss_bg.png`)),
-        preloadImg(monster[0].image),
-        preloadImg(monster[1].image),
-        preloadImg(monster[2].image),
-        preloadImg(monster[3].image),
+        // preloadImg(monster[0].image),
+        // preloadImg(monster[1].image),
+        // preloadImg(monster[2].image),
+        // preloadImg(monster[3].image),
         preloadImg(require(`${imagePath}/hero.png`)),
         preloadImg(require(`${imagePath}/cloud.png`)),
         preloadImg(require(`${imagePath}/wave.png`)),
         preloadImg(require(`${imagePath}/wind.png`)),
         preloadImg(require(`${imagePath}/earthquak.png`)),
-         preloadImg(require(`${imagePath}/fire.png`)),
+        preloadImg(require(`${imagePath}/fire.png`)),
         preloadImg(require(`${imagePath}/fist.png`)),
         preloadImg(require(`${imagePath}/boss.png`))
-    ]).then(([bgLevel1, bgLevel2, bgLevel3, bgLevel4, bgLevel5, leg, body, head, weapon, hero, cloudOne, wave, wind, earthquak, fire, fist, boss]) => {
-        return new Drawer(canvas, bgLevel1, bgLevel2, bgLevel3, bgLevel4, bgLevel5, leg, body, head, weapon, hero, cloudOne, cloudOne, wave, wind, earthquak, fire, fist, boss,
+    ]).then(([monster, bgLevel1, bgLevel2, bgLevel3, bgLevel4, bgLevel5, hero, cloudOne, wave, wind, earthquak, fire, fist, boss]) => {
+
+        return new Drawer(canvas, monster, bgLevel1, bgLevel2, bgLevel3, bgLevel4, bgLevel5, hero, cloudOne, cloudOne, wave, wind, earthquak, fire, fist, boss,
             onGameStateChanged);
     })
 }

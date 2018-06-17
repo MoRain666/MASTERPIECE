@@ -1,14 +1,15 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
+
 
 import ChoseSpellsWindow from "./chose-spells-window"
 import initDrawer from "./GameAnimation";
 
 import openChose from "./assets/open-choose.png"
-import {ATTACK_MONSTER, GAME_STATE_LOSE,} from './const'
+import {ATTACK_MONSTER, GAME_NEXT_LEVEL, GAME_STATE_LOSE, GAME_STATE_WIN,} from './const'
 import './styles.css';
-import '../../../music/bg_music.wav'
+import music from '../../../music/bg_music.wav'
 import RiddleWindow from './RiddleWindow'
-
 
 class Game extends React.Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class Game extends React.Component {
         this.state = {
             choseSpellsWindowVisible: false,
             attackId: null,
+            gameEnd: false,
         };
     }
 
@@ -33,9 +35,13 @@ class Game extends React.Component {
     };
 
     onGameStateChanged = (gameState) => {
-        if (gameState === GAME_STATE_LOSE) {
-
+        if (gameState === GAME_STATE_LOSE || gameState === GAME_STATE_WIN) {
+            this.setState({
+                redirectURL: gameState === GAME_STATE_WIN ? '/win' : '/lost',
+                gameEnd: true
+            })
         }
+
     };
 
     onImageClick = () => {
@@ -58,16 +64,23 @@ class Game extends React.Component {
         this.setState({attackId: null});
 
         if (rightAnswer) {
-            this.drawer.decMonsterHealth();
             this.drawer.startAttack(attackId);
+            setTimeout(() => {
+                this.drawer.decMonsterHealth();
+            }, 2000)
         } else {
-            this.drawer.decHeroHealth();
             this.drawer.startAttack(ATTACK_MONSTER);
+            setTimeout(() => {
+                this.drawer.decHeroHealth();
+            }, 2000)
         }
     };
 
 
     render() {
+        if (this.state.gameEnd) {
+            return <Redirect to={this.state.redirectURL} />
+        }
         return (
             <div className="GamePage">
                 {this.state.attackId !== null && (
@@ -76,7 +89,6 @@ class Game extends React.Component {
                         onAnswer={this.onAnswer}
                     />
                 )}
-
                 {this.state.riddleWindow}
                 <img src={openChose} className='OpenChooseWindow' onClick={this.onImageClick}/>
                 {this.state.choseSpellsWindowVisible && (
@@ -84,7 +96,7 @@ class Game extends React.Component {
                         onAttackSelect={this.onAttackSelect}
                     />
                 )}
-                {/*<audio ref="audio_tag" src={music} autoPlay loop={music}/>*/}
+                <audio ref="audio_tag" src={music} autoPlay loop={music}/>
                 <canvas
                     className="canvas"
                     ref={this.setCanvas}

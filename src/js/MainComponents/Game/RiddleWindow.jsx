@@ -19,27 +19,38 @@ import Translator from "../riddles/translator";
 
 
 class RiddleWindow extends React.Component{
+ onAnswer = (rightAnswer) => {
+     this.props.onAnswer(rightAnswer);
+     if (rightAnswer) {
+         let nameOfUser = localStorage.getItem('currentUser');
+         if (nameOfUser) {
+             let users = JSON.parse(localStorage.getItem('users')) || {};
+             users[nameOfUser] = (users[nameOfUser] || 0) + 1;
+             localStorage.setItem('users',JSON.stringify(users));
+         }
+     }
+ };
 
     render(){
         if (this.props.attackId === ATTACK_WIND) {
             return (
                 <Arithmetic
-                    onAnswer={this.props.onAnswer}
+                    onAnswer={this.onAnswer}
                 />
             )
         } else if (this.props.attackId === ATTACK_FIRE) {
             return (<Choosecolour
-                onAnswer={this.props.onAnswer}
+                onAnswer={this.onAnswer}
             />
             )
         } else if (this.props.attackId === ATTACK_GROUND) {
             return ( <Sequence
-                onAnswer={this.props.onAnswer}
+                onAnswer={this.onAnswer}
             />
             )
         } else if (this.props.attackId === ATTACK_WATER) {
             return ( <Translator
-                onAnswer={this.props.onAnswer}
+                onAnswer={this.onAnswer}
             />
             )
         }

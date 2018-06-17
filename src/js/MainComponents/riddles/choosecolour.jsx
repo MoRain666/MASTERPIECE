@@ -29,26 +29,6 @@ class ChooseColor extends React.Component {
 
     solution() {
         this.props.onAnswer(this.refs.result.value === this.CurrentShapeName);
-
-        // if (this.refs.result.value === this.CurrentShapeName) {
-        //     this.props.onAnswer(true);
-        //     localStorage.setItem('riddleProperty', 'right');
-        //     document.getElementById('choosecolor').classList.add('right');
-        //     document.getElementById('result').classList.add('right');
-        //     document.getElementsByTagName('button')[0].classList.add('right');
-        //     let nameOfUser = localStorage.getItem('currentUser');
-        //     let Newscrore = JSON.parse(localStorage.getItem('users'))[nameOfUser] + 1;
-        //     let users = JSON.parse(localStorage.getItem('users'));
-        //     users[nameOfUser] = Newscrore;
-        //     localStorage.setItem('users', JSON.stringify(users));
-        // } else {
-        //     this.props.onAnswer(false);
-        //     localStorage.setItem('riddleProperty', 'wrong');
-        //     document.getElementById('choosecolor').classList.add('wrong');
-        //     document.getElementById('result').classList.add('wrong');
-        //     document.getElementsByTagName('button')[0].classList.add('wrong');
-        // }
-
     }
 
     componentDidMount(){
@@ -59,7 +39,7 @@ class ChooseColor extends React.Component {
         return <div id='choosecolor' className='choosecolor'>
             <h3>What is the color of this figure?</h3>
             <img src={this.CurrentShape.image}/>
-            <input id='result' type="text" ref='result'/>
+            <input id='result' type="text" ref='result' autoFocus />
             <button id='submitButton' onClick={this.solution.bind(this)}>Submit</button>
         </div>
     }
