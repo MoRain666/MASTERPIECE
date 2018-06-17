@@ -1,8 +1,8 @@
 import React from 'react';
 class Arithmetic extends React.Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             operators: ['+', '-', '*'],
             firstNumber: '',

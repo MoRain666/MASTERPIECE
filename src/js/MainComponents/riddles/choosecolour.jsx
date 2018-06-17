@@ -2,8 +2,8 @@ import React from 'react';
 
 class ChooseColor extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             shapes: [
                 {image: require('../Game/assets/chosecolorriddle/aquamarine.png'), name: 'aquamarine'},
@@ -36,7 +36,7 @@ class ChooseColor extends React.Component {
             document.getElementsByTagName('button')[0].classList.add('wrong');
         }
         setTimeout(() => {
-            document.querySelector('#choosecolor').remove(); //удалить контейнер Насти,а не свой
+            document.querySelector(this.props.location).remove();
         }, 2000);
     }
 
