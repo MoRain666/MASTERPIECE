@@ -3,8 +3,8 @@ class WhatWeDid extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            Vlad:['lorem ipsum', 'lorem ipsum', 'lorem ipsum', 'lorem ipsum'],
-            Nastya:['lorem ipsum', 'lorem ipsum', 'lorem ipsum', 'lorem ipsum']
+            Vlad:['Landing Page', 'Deploy', 'Riddles(arithemetic, sequence, translator)', 'NotFound Page', 'Score', 'Registration Page', 'Final Page'],
+            Nastya:['Game Animation', 'Riddles(choosecolour and some corrections)', 'Modal dialog in game','Interaction of components', 'Code refactoring', 'Full canvas']
         };
     }
     render(){

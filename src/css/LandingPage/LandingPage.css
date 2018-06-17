@@ -141,20 +141,26 @@
     background-size: cover;
     height: 500px;
     font-family: 'anton';
-    font-size: 40px;
+    font-size: 35px;
     margin-top: 10px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 }
 .LandingPage-job h3{
     font-size: 50px;
 }
+.LandingPage-job ul{
+    list-style: disc;
+}
 .LandingPage-job li{
     margin-top: 10px;
 }
 .LandingPage-person-work{
-    margin: 0 70px;
+    width: 400px;
+}
+.LandingPage-person-work:first-child{
+    margin-left: 10%;
 }
 /*toTopButton*/
 .ToTop{
