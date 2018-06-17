@@ -95,13 +95,9 @@ function preloadImg(src) {
     })
 }
 
-
-
-
-
 class Drawer {
 
-    constructor(canvas, bg, leg, body, head, weapon, hero, cloudOne, cloudTwo, wave, wind, earthquak, fire, fist, boss, onGameStateChanged) {
+    constructor(canvas, bgLevel1, bgLevel2, bgLevel3, bgLevel4, bgLevel5, leg, body, head, weapon, hero, cloudOne, cloudTwo, wave, wind, earthquak, fire, fist, boss, onGameStateChanged) {
         this.context = canvas.getContext('2d');
         this.leg = leg;
         this.head = head;
@@ -110,6 +106,11 @@ class Drawer {
         this.hero = hero;
         this.cloudOne = cloudOne;
         this.cloudTwo = cloudTwo;
+        this.bgLevel1 = bgLevel1;
+        this.bgLevel2 = bgLevel2;
+        this.bgLevel3 = bgLevel3;
+        this.bgLevel4 = bgLevel4;
+        this.bgLevel5 = bgLevel5;
         this.draw = this.draw.bind(this);
         this.speed = 1;
         this.scroll = 0;
@@ -133,7 +134,7 @@ class Drawer {
             moveDown: true
         };
         this.bgAttr = {
-            img: bg,
+            img: bgLevel1,
             x1: 0,
             x2: -900
         };
@@ -147,7 +148,8 @@ class Drawer {
         this.fist = fist;
         this.fistX = 600;
         this.boss = boss;
-        this.onGameStateChanged = onGameStateChanged
+        this.onGameStateChanged = onGameStateChanged;
+        this.levelId = 3;
     }
 
     changeGameState(gameState) {
@@ -191,9 +193,11 @@ class Drawer {
 
     draw() {
         this.context.clearRect(0, 0, 900, 600);
+        //
+        // this.context.drawImage(this.bgLevel1, this.bgAttr.x1, 0);
+        // this.context.drawImage(this.bgLevel1, this.bgAttr.x2, 0);
+        this.drawLevelBackgroundandAttr();
 
-        this.context.drawImage(this.bgAttr.img, this.bgAttr.x1, 0);
-        this.context.drawImage(this.bgAttr.img, this.bgAttr.x2, 0);
         this.bgAttr.x1 += 1;
         if (this.bgAttr.x1 >= 900) {
             this.bgAttr.x1 = -900;
@@ -208,31 +212,7 @@ class Drawer {
 
         this.context.fillStyle = '#AB0000';
 
-        this.context.drawImage(this.cloudOne, this.cloudOneAttr.x, 420, 300, 230);
-        if (this.cloudOneAttr.moveRight) {
-            this.cloudOneAttr.x += 0.3;
-            if (this.cloudOneAttr.x >= 10) {
-                this.cloudOneAttr.moveRight = false;
-            }
-        } else {
-            this.cloudOneAttr.x -= 0.3;
-            if (this.cloudOneAttr.x <= 0) {
-                this.cloudOneAttr.moveRight = true;
-            }
-        }
 
-        this.context.drawImage(this.cloudTwo, this.cloudTwoAttr.x, 420, 300, 230);
-        if (this.cloudTwoAttr.moveRight) {
-            this.cloudTwoAttr.x += 0.5;
-            if (this.cloudTwoAttr.x >= 590) {
-                this.cloudTwoAttr.moveRight = false;
-            }
-        } else {
-            this.cloudTwoAttr.x -= 0.5;
-            if (this.cloudTwoAttr.x === 570) {
-                this.cloudTwoAttr.moveRight = true;
-            }
-        }
 
         this.context.drawImage(this.leg, 680, 430, 120, 100);
         this.context.drawImage(this.body, 670, 320, 140, 140);
@@ -277,6 +257,7 @@ class Drawer {
             this.drawAttack()
         }
 
+
         setTimeout(() => requestAnimFrame(this.draw), 1000 / 60);
     }
 
@@ -296,6 +277,51 @@ class Drawer {
             this.attackAttrs = undefined
         }
     }
+
+    drawLevelBackgroundandAttr() {
+        if (this.levelId === 1) {
+            this.context.drawImage(this.bgLevel1, this.bgAttr.x1, 0);
+            this.context.drawImage(this.bgLevel1, this.bgAttr.x2, 0);
+            this.context.drawImage(this.cloudOne, this.cloudOneAttr.x, 420, 300, 230);
+            if (this.cloudOneAttr.moveRight) {
+                this.cloudOneAttr.x += 0.3;
+                if (this.cloudOneAttr.x >= 10) {
+                    this.cloudOneAttr.moveRight = false;
+                }
+            } else {
+                this.cloudOneAttr.x -= 0.3;
+                if (this.cloudOneAttr.x <= 0) {
+                    this.cloudOneAttr.moveRight = true;
+                }
+            }
+
+            this.context.drawImage(this.cloudTwo, this.cloudTwoAttr.x, 420, 300, 230);
+            if (this.cloudTwoAttr.moveRight) {
+                this.cloudTwoAttr.x += 0.5;
+                if (this.cloudTwoAttr.x >= 590) {
+                    this.cloudTwoAttr.moveRight = false;
+                }
+            } else {
+                this.cloudTwoAttr.x -= 0.5;
+                if (this.cloudTwoAttr.x === 570) {
+                    this.cloudTwoAttr.moveRight = true;
+                }
+            }
+        } else if (this.levelId === 2) {
+            this.context.drawImage(this.bgLevel2, this.bgAttr.x1, 0);
+            this.context.drawImage(this.bgLevel2, this.bgAttr.x2, 0);
+        } else if (this.levelId === 3) {
+            this.context.drawImage(this.bgLevel3, this.bgAttr.x1, 0);
+            this.context.drawImage(this.bgLevel3, this.bgAttr.x2, 0);
+        } else if (this.levelId === 4) {
+            this.context.drawImage(this.bgLevel4, this.bgAttr.x1, 0);
+            this.context.drawImage(this.bgLevel4, this.bgAttr.x2, 0);
+        } else {
+            this.context.drawImage(this.bgLevel5, this.bgAttr.x1, 0);
+            this.context.drawImage(this.bgLevel5, this.bgAttr.x2, 0);
+        }
+    }
+
 
     drawWindAttack(attrs) {
         this.context.drawImage(attrs.sprite, attrs.x, 200, 300, 370);
@@ -358,7 +384,11 @@ class Drawer {
 
 function initDrawer(canvas, onGameStateChanged) {
     return Promise.all([
+        preloadImg(require(`${imagePath}/level_BG/air.jpg`)),
+        preloadImg(require(`${imagePath}/level_BG/fire.png`)),
+        preloadImg(require(`${imagePath}/level_BG/ground.png`)),
         preloadImg(require(`${imagePath}/level_BG/water.png`)),
+        preloadImg(require(`${imagePath}/level_BG/boss_bg.png`)),
         preloadImg(monster[0].image),
         preloadImg(monster[1].image),
         preloadImg(monster[2].image),
@@ -371,8 +401,8 @@ function initDrawer(canvas, onGameStateChanged) {
          preloadImg(require(`${imagePath}/fire.png`)),
         preloadImg(require(`${imagePath}/fist.png`)),
         preloadImg(require(`${imagePath}/boss.png`))
-    ]).then(([bg, leg, body, head, weapon, hero, cloudOne, wave, wind, earthquak, fire, fist, boss]) => {
-        return new Drawer(canvas, bg, leg, body, head, weapon, hero, cloudOne, cloudOne, wave, wind, earthquak, fire, fist, boss,
+    ]).then(([bgLevel1, bgLevel2, bgLevel3, bgLevel4, bgLevel5, leg, body, head, weapon, hero, cloudOne, wave, wind, earthquak, fire, fist, boss]) => {
+        return new Drawer(canvas, bgLevel1, bgLevel2, bgLevel3, bgLevel4, bgLevel5, leg, body, head, weapon, hero, cloudOne, cloudOne, wave, wind, earthquak, fire, fist, boss,
             onGameStateChanged);
     })
 }
