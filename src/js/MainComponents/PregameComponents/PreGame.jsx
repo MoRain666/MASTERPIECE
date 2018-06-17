@@ -20,6 +20,16 @@ class PreGame extends React.Component{
             information: 'Do you think it`s your fate??? Let`s try to see!',
             redirect: false
         };
+
+        this.form = <form onSubmit={this.createNewUser.bind(this)} className='PreGame-form'>
+            <h3>What's your name, young hero?</h3>
+            <h4>First Name</h4>
+            <input id='FirstName' type="text" required />
+            <h4>Last Name</h4>
+            <input id='LastName' type="text" required />
+            <input className='button' value='NEXT' type='submit'/>
+        </form>;
+
     }
 
     togglePlay(){
@@ -95,18 +105,19 @@ class PreGame extends React.Component{
     }
 
     formRender(){
-        const form = <form onSubmit={this.createNewUser.bind(this)} className='PreGame-form'>
-            <h3>What's your name, young hero?</h3>
-            <h4>First Name</h4>
-            <input id='FirstName' type="text" required />
-            <h4>Last Name</h4>
-            <input id='LastName' type="text" required />
-            <input className='button' value='NEXT' type='submit'/>
-        </form>;
         setTimeout(()=>{
-            this.setState({formRender: form});
-            document.querySelector('#titles').remove();
+            if(document.querySelector('#titles')){
+                this.setState({formRender: this.form});
+                document.querySelector('#titles').remove();
+                document.querySelector('#PreGame-ScipButton').remove();
+            }
         }, 50000)
+    }
+
+    skipInfo(){
+        this.setState({formRender: this.form});
+        document.querySelector('#titles').remove();
+        document.querySelector('#PreGame-ScipButton').remove();
     }
 
     componentDidMount(){
@@ -121,6 +132,7 @@ class PreGame extends React.Component{
         return <div id='PreGame' className='PreGame'>
         <audio id="myAudio" src={superman_music} autoPlay></audio>
         <button className='audioButton PreGame-PlayButton' onClick={this.togglePlay.bind(this)}></button>
+        <div onClick={this.skipInfo.bind(this)} id='PreGame-ScipButton' className='PreGame-ScipButton'></div>
             <div id='about-container' className="about-container">
                 <img src={require('../../../img/PreGame/supermanFly.gif')} alt=""/>
                 <div id="titles">

@@ -38,12 +38,22 @@
     left: 40px;
     top: 40px;
     border-radius: 50%;
+    cursor: pointer;
 }
 .PreGame-PlayButton{
     background-image: url('../../img/PreGame/madiaPlay.png');
 }
 .PreGame-PauseButton{
     background-image: url('../../img/PreGame/mediaPause.png');
+}
+.PreGame-ScipButton{
+    position: absolute;
+    top: 80%;
+    cursor: pointer;
+    right: 5%;
+    width: 64px;
+    height: 64px;
+    background-image: url('../../img/PreGame/right-arrow.png');
 }
 .PreGame-form{
     display: flex;
@@ -75,6 +85,7 @@
 }
 .PreGame-form .button:hover{
     background: red;
+    cursor: pointer;
 }
 #titles
 {

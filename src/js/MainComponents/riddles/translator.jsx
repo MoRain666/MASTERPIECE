@@ -1,6 +1,6 @@
 import React from 'react';
 import { dictionary } from './dictionary';
-class translator extends React.Component{
+class Translator extends React.Component{
 
     constructor(props){
         super(props);
@@ -54,6 +54,7 @@ class translator extends React.Component{
             }
         });
     }
+
     componentDidMount(){
         this.initRandomWorld();
         this.initEnterEvent();
@@ -69,4 +70,4 @@ class translator extends React.Component{
     }
 
 }
-export default translator;
+export default Translator;

@@ -1,14 +1,14 @@
 import React from 'react';
-class arithmetic extends React.Component{
+class Arithmetic extends React.Component{
 
     constructor(props){
         super(props);
         this.state = {
-            operators:['+', '-', '*'],
-            firstNumber:'',
-            lastNumber:'',
-            result:'',
-            currentOperator:''
+            operators: ['+', '-', '*'],
+            firstNumber: '',
+            lastNumber: '',
+            result: '',
+            currentOperator: ''
         };
 
     }
@@ -73,4 +73,4 @@ class arithmetic extends React.Component{
         </div>
     }
 }
-export default arithmetic;
+export default Arithmetic;
