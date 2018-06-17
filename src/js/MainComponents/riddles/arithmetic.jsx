@@ -1,14 +1,14 @@
 import React from 'react';
-class arithmetic extends React.Component{
+class Arithmetic extends React.Component{
 
     constructor(){
         super();
         this.state = {
-            operators:['+', '-', '*'],
-            firstNumber:'',
-            lastNumber:'',
-            result:'',
-            currentOperator:''
+            operators: ['+', '-', '*'],
+            firstNumber: '',
+            lastNumber: '',
+            result: '',
+            currentOperator: ''
         };
 
     }
@@ -59,7 +59,7 @@ class arithmetic extends React.Component{
             document.getElementsByTagName('button')[0].classList.add('wrong');
         }
         setTimeout(()=>{
-            document.querySelector('#arithmetic').remove(); //удалить контейнер Насти,а не свой
+            document.querySelector(this.props.location).remove();
         },2000);
     }
 
@@ -71,4 +71,4 @@ class arithmetic extends React.Component{
         </div>
     }
 }
-export default arithmetic;
+export default Arithmetic;

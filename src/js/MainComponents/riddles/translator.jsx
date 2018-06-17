@@ -1,9 +1,10 @@
 import React from 'react';
 import { dictionary } from './dictionary';
-class translator extends React.Component{
+class Translator extends React.Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
+        
         this.state = {
             currentWord:''
         };
@@ -23,7 +24,7 @@ class translator extends React.Component{
             localStorage.setItem('riddleProperty', 'wrong');
         }
         setTimeout(()=>{
-            document.querySelector('#translator').remove(); //удалить контейнер Насти,а не свой
+            document.querySelector(this.props.location).remove();
         },2000);
     }
 
@@ -68,4 +69,4 @@ class translator extends React.Component{
     }
 
 }
-export default translator;
+export default Translator;

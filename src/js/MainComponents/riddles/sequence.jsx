@@ -1,6 +1,6 @@
 import React from 'react';
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
-class sequence extends React.Component{
+class Sequence extends React.Component{
 
     constructor(){
         super();
@@ -78,4 +78,4 @@ class sequence extends React.Component{
     }
 
 }
-export default sequence;
+export default Sequence;

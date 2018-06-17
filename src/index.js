@@ -7,16 +7,13 @@ import Home from './js/MainComponents/home.jsx';
 import Game from './js/MainComponents/Game/index.jsx';
 import NotFound from './js/MainComponents/notfound.jsx';
 import PreGame from './js/MainComponents/PregameComponents/PreGame.jsx';
-import translator from './js/MainComponents/riddles/translator';
-import sequence from './js/MainComponents/riddles/sequence';
-import arithmetic from './js/MainComponents/riddles/arithmetic';
-import ChooseColor from './js/MainComponents/riddles/choosecolour';
+import Arithmetic from './js/MainComponents/riddles/arithmetic';
 
 ReactDOM.render(<Router>
     <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/pregame" component={PreGame} />
-        <Route path="/riddles" component={translator} />
+        <Route path="/riddles" component={Arithmetic} />
         <Route path="/game" component={Game} />
         <Route component={NotFound} />
     </Switch>
