@@ -413,14 +413,14 @@ class Drawer {
     }
 
     decHeroHealth() {
-        this.helthWidthHero -= 100;
+        this.helthWidthHero -= 20;
         if (this.helthWidthHero <= 0) {
             this.changeGameState(GAME_STATE_LOSE);
         }
     }
 
     decMonsterHealth() {
-        this.helthWidthMonster -= 100;
+        this.helthWidthMonster -= 20;
         if (this.helthWidthMonster <= 0) {
             this.levelId += 1;
             if (this.levelId > 5) {

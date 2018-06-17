@@ -96,7 +96,7 @@ class Game extends React.Component {
                         onAttackSelect={this.onAttackSelect}
                     />
                 )}
-                <audio ref="audio_tag" src={music} autoPlay loop={music}/>
+                {/*<audio ref="audio_tag" src={music} autoPlay loop={music}/>*/}
                 <canvas
                     className="canvas"
                     ref={this.setCanvas}
