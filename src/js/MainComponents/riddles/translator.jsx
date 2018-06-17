@@ -54,6 +54,7 @@ class Translator extends React.Component{
             }
         });
     }
+    
     componentDidMount(){
         this.initRandomWorld();
         this.initEnterEvent();

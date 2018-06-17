@@ -18,6 +18,15 @@ class ChooseColor extends React.Component {
         this.CurrentShapeName = this.CurrentShape.name;
     }
 
+    initEnterEvent(){
+        const input = document.getElementById('result');
+        input.addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+                document.getElementById("submitButton").click();
+            }
+        });
+    }
+
     solution() {
         if (this.refs.result.value === this.CurrentShapeName) {
             localStorage.setItem('riddleProperty', 'right');
@@ -40,12 +49,16 @@ class ChooseColor extends React.Component {
         }, 2000);
     }
 
+    componentDidMount(){
+        this.initEnterEvent();
+    }
+
     render() {
         return <div id='choosecolor' className='choosecolor'>
             <h3>What is the color of this figure?</h3>
             <img src={this.CurrentShape.image}/>
             <input id='result' type="text" ref='result'/>
-            <button onClick={this.solution.bind(this)}>Submit</button>
+            <button id='submitButton' onClick={this.solution.bind(this)}>Submit</button>
         </div>
     }
 }
