@@ -8,6 +8,7 @@ import Game from './js/MainComponents/Game/index.jsx';
 import NotFound from './js/MainComponents/notfound.jsx';
 import PreGame from './js/MainComponents/PregameComponents/PreGame.jsx';
 import FinalPage from './js/MainComponents/finalPage';
+import Score from './js/MainComponents/score';
 
 ReactDOM.render(<Router>
     <Switch>
@@ -15,6 +16,7 @@ ReactDOM.render(<Router>
         <Route path="/pregame" component={PreGame} />
         <Route path="/riddles" component={FinalPage} />
         <Route path="/game" component={Game} />
+        <Route path="/score" component={Score} />
         <Route component={NotFound} />
     </Switch>
 </Router>,
