@@ -115,11 +115,11 @@ function preloadImg(src) {
 
 class Drawer {
 
-    constructor(canvas, monster, bgLevel1, bgLevel2, bgLevel3, bgLevel4, bgLevel5, hero, cloudOne, cloudTwo, wave, wind, earthquak, fire, fist, boss, onGameStateChanged) {
+    constructor(canvas, monster, bgLevel1, bgLevel2, bgLevel3, bgLevel4, bgLevel5, hero, cloud, wave, wind, earthquak, fire, fist, boss, onGameStateChanged) {
         this.context = canvas.getContext('2d');
         this.hero = hero;
-        this.cloudOne = cloudOne;
-        this.cloudTwo = cloudTwo;
+        this.cloudOne = cloud;
+        this.cloudTwo = cloud;
         this.bgLevel1 = bgLevel1;
         this.bgLevel2 = bgLevel2;
         this.bgLevel3 = bgLevel3;
@@ -462,9 +462,9 @@ function initDrawer(canvas, onGameStateChanged) {
         preloadImg(require(`${imagePath}/fire.png`)),
         preloadImg(require(`${imagePath}/fist.png`)),
         preloadImg(require(`${imagePath}/boss.png`))
-    ]).then(([monster, bgLevel1, bgLevel2, bgLevel3, bgLevel4, bgLevel5, hero, cloudOne, wave, wind, earthquak, fire, fist, boss]) => {
+    ]).then(([monster, bgLevel1, bgLevel2, bgLevel3, bgLevel4, bgLevel5, hero, cloud, wave, wind, earthquak, fire, fist, boss]) => {
 
-        return new Drawer(canvas, monster, bgLevel1, bgLevel2, bgLevel3, bgLevel4, bgLevel5, hero, cloudOne, cloudOne, wave, wind, earthquak, fire, fist, boss,
+        return new Drawer(canvas, monster, bgLevel1, bgLevel2, bgLevel3, bgLevel4, bgLevel5, hero, cloud, wave, wind, earthquak, fire, fist, boss,
             onGameStateChanged);
     })
 }
