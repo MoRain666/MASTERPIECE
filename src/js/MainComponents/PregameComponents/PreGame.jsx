@@ -76,14 +76,14 @@ class PreGame extends React.Component{
     }
 
     typeWriter(selector) {
-        let i = 0;
+        let currentChar = 0;
         let txt = this.state.information;
         let speed = 200;
         function writer(){
             const container = document.querySelector(selector);
-            if (i < txt.length) {
-                container.textContent += txt.charAt(i);
-                i++;
+            if (currentChar < txt.length) {
+                container.textContent += txt.charAt(currentChar);
+                currentChar++;
                 setTimeout(writer, speed);
             }
         }

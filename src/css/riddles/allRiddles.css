@@ -14,13 +14,6 @@
 
 }
 
-.right {
-    background-color: green !important;
-}
-
-.wrong {
-    background-color: brown !important;
-}
 
 .arithmetic input {
     margin-left: 2%;
@@ -86,9 +79,15 @@ input:focus, button:focus {
     margin-top: 20px;
 }
 
-.sortableList div {
+.sortableList li {
     margin-bottom: 10px;
     cursor: pointer;
+}
+body li{
+    z-index: 99999;
+    font-size: 30px;
+    list-style: none;
+    font-family: 'anton';
 }
 
 .sequence button,

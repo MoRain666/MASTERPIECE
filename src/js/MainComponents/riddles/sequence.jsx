@@ -46,7 +46,7 @@ class Sequence extends React.Component{
     }
 
     render(){
-        const SortableItem = SortableElement(({value}) => <div>{value}</div>);
+        const SortableItem = SortableElement(({value}) => <li>{value}</li>);
         const SortableList = SortableContainer(({items}) => {
             return (
               <ul className='sortableList'>

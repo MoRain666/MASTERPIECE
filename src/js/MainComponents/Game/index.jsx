@@ -5,9 +5,9 @@ import { Redirect } from 'react-router-dom';
 import ChoseSpellsWindow from "./chose-spells-window";
 import initDrawer from "./GameAnimation";
 
-import openChose from "./assets/open-choose.png";
+import openChose from "../../../img/assetsForGame/open-choose.png";
 import {ATTACK_MONSTER, GAME_STATE_LOSE, GAME_STATE_WIN,} from './const';
-import './styles.css';
+import '../../../css/Game/styles.css';
 import music from '../../../music/bg_music.wav';
 import RiddleWindow from './RiddleWindow';
 
@@ -39,7 +39,7 @@ class Game extends React.Component {
             this.setState({
                 redirectURL: gameState === GAME_STATE_WIN ? '/win' : '/lost',
                 gameEnd: true
-            })
+            });
         }
 
     };
@@ -48,8 +48,8 @@ class Game extends React.Component {
         this.setState((prevState) => {
             return {
                 choseSpellsWindowVisible: !prevState.choseSpellsWindowVisible,
-            }
-        })
+            };
+        });
     };
 
     onAttackSelect = (attackId) => {
@@ -72,7 +72,7 @@ class Game extends React.Component {
             this.drawer.startAttack(ATTACK_MONSTER);
             setTimeout(() => {
                 this.drawer.decHeroHealth();
-            }, 2000)
+            }, 2000);
         }
     };
 

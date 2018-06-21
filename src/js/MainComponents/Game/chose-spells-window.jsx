@@ -1,15 +1,15 @@
 import React from 'react';
 
-import './styles.css';
+import '../../../css/Game/styles.css';
 
-import {ATTACK_FIRE, ATTACK_GROUND, ATTACK_WATER, ATTACK_WIND, ATTACK_MONSTER} from './const'
+import {ATTACK_FIRE, ATTACK_GROUND, ATTACK_WATER, ATTACK_WIND, ATTACK_MONSTER} from './const';
 
 
 const ATTACKS = [
-    {src: require('./assets/riddleWindow/wind.png'), id: ATTACK_WIND},
-    {src: require('./assets/riddleWindow/fire.png'), id: ATTACK_FIRE},
-    {src: require('./assets/riddleWindow/ground.png'), id: ATTACK_GROUND},
-    {src: require('./assets/riddleWindow/water.png'), id: ATTACK_WATER},
+    {src: require('../../../img/assetsForGame/riddleWindow/wind.png'), id: ATTACK_WIND},
+    {src: require('../../../img/assetsForGame/riddleWindow/fire.png'), id: ATTACK_FIRE},
+    {src: require('../../../img/assetsForGame/riddleWindow/ground.png'), id: ATTACK_GROUND},
+    {src: require('../../../img/assetsForGame/riddleWindow/water.png'), id: ATTACK_WATER},
     {id: ATTACK_MONSTER}
 ];
 

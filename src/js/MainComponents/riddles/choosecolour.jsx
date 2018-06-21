@@ -6,12 +6,12 @@ class ChooseColor extends React.Component {
         super(props);
         this.state = {
             shapes: [
-                {image: require('../Game/assets/chosecolorriddle/aquamarine.png'), name: 'aquamarine'},
-                {image: require('../Game/assets/chosecolorriddle/black.png'), name: 'black'},
-                {image: require('../Game/assets/chosecolorriddle/blue.png'), name: 'blue'},
-                {image: require('../Game/assets/chosecolorriddle/green.png'), name: 'green'},
-                {image: require('../Game/assets/chosecolorriddle/purple.png'), name: 'purple'},
-                {image: require('../Game/assets/chosecolorriddle/red.png'), name: 'red'}
+                {image: require('../../../img/assetsForGame/chosecolorriddle/aquamarine.png'), name: 'aquamarine'},
+                {image: require('../../../img/assetsForGame/chosecolorriddle/black.png'), name: 'black'},
+                {image: require('../../../img/assetsForGame/chosecolorriddle/blue.png'), name: 'blue'},
+                {image: require('../../../img/assetsForGame/chosecolorriddle/green.png'), name: 'green'},
+                {image: require('../../../img/assetsForGame/chosecolorriddle/purple.png'), name: 'purple'},
+                {image: require('../../../img/assetsForGame/chosecolorriddle/red.png'), name: 'red'}
             ],
         };
         this.CurrentShape = this.state.shapes.sort(() => 0.5 - Math.random())[0];
@@ -19,9 +19,10 @@ class ChooseColor extends React.Component {
     }
 
     initEnterEvent(){
+        const enter = 13;
         const input = document.getElementById('result');
         input.addEventListener("keyup", function(event) {
-            if (event.keyCode === 13) {
+            if (event.keyCode === enter) {
                 document.getElementById("submitButton").click();
             }
         });

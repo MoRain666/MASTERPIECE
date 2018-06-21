@@ -9,14 +9,14 @@ class NotFound extends React.Component{
         };
     }
     typeWriter(selector) {
-        let i = 0;
+        let currentChar = 0;
         let txt = this.state.information;
         let speed = 150;
         const container = document.querySelector(selector);
         function writer(){
-            if (i < txt.length) {
-                container.textContent += txt.charAt(i);
-                i++;
+            if (currentChar < txt.length) {
+                container.textContent += txt.charAt(currentChar);
+                currentChar++;
                 setTimeout(writer, speed);
             }
         }

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
     ATTACK_FIRE,
     ATTACK_GROUND,
@@ -23,7 +22,7 @@ class RiddleWindow extends React.Component{
              localStorage.setItem('users',JSON.stringify(users));
          }
      }
- };
+ }
 
     render(){
         if (this.props.attackId === ATTACK_WIND) {

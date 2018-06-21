@@ -32,9 +32,10 @@ class Translator extends React.Component{
     }
 
     initEnterEvent(){
+        const enter = 13;
         const input = document.getElementById('result');
         input.addEventListener("keyup", function(event) {
-            if (event.keyCode === 13) {
+            if (event.keyCode === enter) {
                 document.getElementById("submitButton").click();
             }
         });

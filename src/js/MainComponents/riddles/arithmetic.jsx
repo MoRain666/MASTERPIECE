@@ -19,18 +19,19 @@ class Arithmetic extends React.Component{
 
     exampleGeneration(){
         let firstNumber = Math.round(Math.random() * 10);
-        this.setState({firstNumber: firstNumber});
         let lastNumber = Math.round(Math.random() * 10);
-        this.setState({lastNumber: lastNumber});
         let operator = this.randomSort();
-        this.setState({currentOperator: operator});
         let result = eval(`${firstNumber}${operator}${lastNumber}`);
+        this.setState({firstNumber: firstNumber});
+        this.setState({currentOperator: operator});
+        this.setState({lastNumber: lastNumber});
         this.setState({result: result});
     }
     initEnterEvent(){
+        const enter = 13;
         const input = document.getElementById('result');
         input.addEventListener("keyup", function(event) {
-            if (event.keyCode === 13) {
+            if (event.keyCode === enter) {
                 document.getElementById("submitButton").click();
             }
         });

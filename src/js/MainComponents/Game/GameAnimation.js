@@ -7,50 +7,48 @@ import {
     GAME_STATE_INITIAL,
     GAME_STATE_LOSE,
     GAME_STATE_WIN
-} from './const'
-
-const imagePath = './assets';
+} from './const';
 
 
 const LEGS = [
-    require(`${imagePath}/legs/boots.png`),
-    require(`${imagePath}/legs/gree-legs.png`),
-    require(`${imagePath}/legs/pink-legs.png`),
-    require(`${imagePath}/legs/round-legs.png`),
-    require(`${imagePath}/legs/blue-legs.png`),
-    require(`${imagePath}/legs/two-legs.png`),
-    require(`${imagePath}/legs/yellow-legs.png`),
+    require(`../../../img/assetsForGame/legs/boots.png`),
+    require(`../../../img/assetsForGame/legs/gree-legs.png`),
+    require(`../../../img/assetsForGame/legs/pink-legs.png`),
+    require(`../../../img/assetsForGame/legs/round-legs.png`),
+    require(`../../../img/assetsForGame/legs/blue-legs.png`),
+    require(`../../../img/assetsForGame/legs/two-legs.png`),
+    require(`../../../img/assetsForGame/legs/yellow-legs.png`),
 ];
 
 
 const BODY = [
-    require(`${imagePath}/Body/01.png`),
-    require(`${imagePath}/Body/1.2.png`),
-    require(`${imagePath}/Body/1.3.png`),
-    require(`${imagePath}/Body/1.4.png`),
-    require(`${imagePath}/Body/1.5.png`),
-    require(`${imagePath}/Body/1.6.png`),
-    require(`${imagePath}/Body/1.7.png`),
+    require(`../../../img/assetsForGame/Body/01.png`),
+    require(`../../../img/assetsForGame/Body/1.2.png`),
+    require(`../../../img/assetsForGame/Body/1.3.png`),
+    require(`../../../img/assetsForGame/Body/1.4.png`),
+    require(`../../../img/assetsForGame/Body/1.5.png`),
+    require(`../../../img/assetsForGame/Body/1.6.png`),
+    require(`../../../img/assetsForGame/Body/1.7.png`),
 ];
 
 const HEAD = [
-    require(`${imagePath}/head/devil-head.png`),
-    require(`${imagePath}/head/ghost.png`),
-    require(`${imagePath}/head/green-head.png`),
-    require(`${imagePath}/head/hood.png`),
-    require(`${imagePath}/head/monster-head.png`),
-    require(`${imagePath}/head/purple-head.png`),
-    require(`${imagePath}/head/zombie.png`),
+    require(`../../../img/assetsForGame/head/devil-head.png`),
+    require(`../../../img/assetsForGame/head/ghost.png`),
+    require(`../../../img/assetsForGame/head/green-head.png`),
+    require(`../../../img/assetsForGame/head/hood.png`),
+    require(`../../../img/assetsForGame/head/monster-head.png`),
+    require(`../../../img/assetsForGame/head/purple-head.png`),
+    require(`../../../img/assetsForGame/head/zombie.png`),
 ];
 
 const WEAPON = [
-    require(`${imagePath}/Weapon/axe.png`),
-    require(`${imagePath}/Weapon/axe-grey.png`),
-    require(`${imagePath}/Weapon/cudgel.png`),
-    require(`${imagePath}/Weapon/silver-sword.png`),
-    require(`${imagePath}/Weapon/spear.png`),
-    require(`${imagePath}/Weapon/sword.png`),
-    require(`${imagePath}/Weapon/thor-mjolnir.png`),
+    require(`../../../img/assetsForGame/Weapon/axe.png`),
+    require(`../../../img/assetsForGame/Weapon/axe-grey.png`),
+    require(`../../../img/assetsForGame/Weapon/cudgel.png`),
+    require(`../../../img/assetsForGame/Weapon/silver-sword.png`),
+    require(`../../../img/assetsForGame/Weapon/spear.png`),
+    require(`../../../img/assetsForGame/Weapon/sword.png`),
+    require(`../../../img/assetsForGame/Weapon/thor-mjolnir.png`),
 ];
 
 let monsterName = '';
@@ -60,8 +58,6 @@ function createMonster() {
     let body = BODY.sort(() => 0.5 - Math.random()).slice(0, 1)[0];
     let head = HEAD.sort(() => 0.5 - Math.random()).slice(0, 1)[0];
     let weapon = WEAPON.sort(() => 0.5 - Math.random()).slice(0, 1)[0];
-    // const monster = []
-    // monster.push(leg, trunk, headMonster, weaponMonster);
 
     return Promise.all([
         preloadImg(leg),
@@ -445,23 +441,19 @@ class Drawer {
 function initDrawer(canvas, onGameStateChanged) {
     return Promise.all([
         createMonster(),
-        preloadImg(require(`${imagePath}/level_BG/air.jpg`)),
-        preloadImg(require(`${imagePath}/level_BG/fire.png`)),
-        preloadImg(require(`${imagePath}/level_BG/ground.png`)),
-        preloadImg(require(`${imagePath}/level_BG/water.png`)),
-        preloadImg(require(`${imagePath}/level_BG/boss_bg.png`)),
-        // preloadImg(monster[0].image),
-        // preloadImg(monster[1].image),
-        // preloadImg(monster[2].image),
-        // preloadImg(monster[3].image),
-        preloadImg(require(`${imagePath}/hero.png`)),
-        preloadImg(require(`${imagePath}/cloud.png`)),
-        preloadImg(require(`${imagePath}/wave.png`)),
-        preloadImg(require(`${imagePath}/wind.png`)),
-        preloadImg(require(`${imagePath}/earthquak.png`)),
-        preloadImg(require(`${imagePath}/fire.png`)),
-        preloadImg(require(`${imagePath}/fist.png`)),
-        preloadImg(require(`${imagePath}/boss.png`))
+        preloadImg(require(`../../../img/assetsForGame/level_BG/air.jpg`)),
+        preloadImg(require(`../../../img/assetsForGame/level_BG/fire.png`)),
+        preloadImg(require('../../../img/assetsForGame/level_BG/ground.png')),
+        preloadImg(require(`../../../img/assetsForGame/level_BG/water.png`)),
+        preloadImg(require(`../../../img/assetsForGame/level_BG/boss_bg.png`)),
+        preloadImg(require(`../../../img/assetsForGame/hero.png`)),
+        preloadImg(require(`../../../img/assetsForGame/cloud.png`)),
+        preloadImg(require(`../../../img/assetsForGame/wave.png`)),
+        preloadImg(require(`../../../img/assetsForGame/wind.png`)),
+        preloadImg(require(`../../../img/assetsForGame/earthquak.png`)),
+        preloadImg(require(`../../../img/assetsForGame/fire.png`)),
+        preloadImg(require(`../../../img/assetsForGame/fist.png`)),
+        preloadImg(require(`../../../img/assetsForGame/boss.png`))
     ]).then(([monster, bgLevel1, bgLevel2, bgLevel3, bgLevel4, bgLevel5, hero, cloud, wave, wind, earthquak, fire, fist, boss]) => {
 
         return new Drawer(canvas, monster, bgLevel1, bgLevel2, bgLevel3, bgLevel4, bgLevel5, hero, cloud, wave, wind, earthquak, fire, fist, boss,
