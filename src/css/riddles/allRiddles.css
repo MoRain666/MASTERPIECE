@@ -84,7 +84,7 @@ input:focus, button:focus {
     cursor: pointer;
 }
 body li{
-    z-index: 99999;
+    z-index: 99;
     font-size: 30px;
     list-style: none;
     font-family: 'anton';
