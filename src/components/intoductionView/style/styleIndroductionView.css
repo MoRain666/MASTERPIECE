@@ -1,0 +1,151 @@
+.introduction-view {
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/introBackground.jpg');
+    display: flex;
+    justify-content: center;
+    font-family: 'anton', sans-serif;;
+}
+
+.intro-view-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-story-text p {
+    color: #D2691E;
+    text-align: center;
+}
+
+.introduction-view > .pregame-container {
+    font-size: 60px;
+    color: #9ACD32;
+    align-self: center;
+    animation-name: blinker;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(1, 0, 0, 1);
+    animation-duration: 2s;
+}
+
+.introduction-view img {
+    width: 450px;
+    height: 260px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    border-radius: 50px;
+}
+
+.introduction-view .audioButton {
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    outline: none;
+    left: 40px;
+    top: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.intro-view-play-button {
+    background-image: url('../img/playButton.png');
+}
+
+.intro-view-pause-button {
+    background-image: url('../img/pauseButton.png');
+}
+
+.intro-view-skip-button {
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    width: 64px;
+    height: 64px;
+    background-image: url('../img/right-arrow.png');
+    cursor: pointer;
+}
+
+.intro-view-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #9ACD32;
+}
+
+.intro-view-form h3 {
+    margin-bottom: 30px;
+    font-size: 40px;
+}
+
+.intro-view-form input,
+.intro-view-form .button {
+    color: #9ACD32;
+    background: #000000;
+    padding: 10px 10px;
+    border: 1px solid #9ACD32;
+    border-radius: 10px;
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.intro-view-form .button:hover {
+    background: #9ACD32;
+    cursor: pointer;
+    color: #000000;
+}
+
+.intro-view-form .button {
+    width: 200px;
+}
+
+.game-story-container {
+    position: absolute;
+    width: 18em;
+    height: 50em;
+    bottom: 0;
+    left: 50%;
+    margin-left: -9em;
+    font-size: 350%;
+    font-weight: bold;
+    text-align: justify;
+    overflow: hidden;
+    transform-origin: 50% 100%;
+    transform: perspective(300px) rotateX(25deg);
+}
+
+.game-story-container:after {
+    position: absolute;
+    content: ' ';
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 60%;
+    pointer-events: none;
+}
+
+.game-story-text {
+    position: absolute;
+    top: 100%;
+    animation: scroll 300s linear 4s infinite;
+}
+
+@keyframes scroll {
+    0% {
+        top: 100%;
+    }
+    100% {
+        top: -170%;
+    }
+}
+
+@keyframes blinker {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}

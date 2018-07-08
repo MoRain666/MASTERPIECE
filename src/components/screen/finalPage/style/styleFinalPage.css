@@ -1,0 +1,53 @@
+.finalPage {
+    width: inherit;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: gainsboro;
+    font-family: 'Cormorant Infant', serif;;
+    text-align: center;
+    color: black;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 50px;
+}
+
+.finalPage h3 {
+    padding: 0 60px;
+}
+
+.finalPage img {
+    width: 550px;
+    height: 350px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.buttonsOfFinalPage {
+    margin-top: 30px;
+    display: flex;
+    width: 830px;
+    justify-content: space-evenly;
+}
+
+.againButton {
+    background: url('../img/button/replayBtn.png');
+}
+
+.scoreButton {
+    background-image: url('../img/button/scorebtn.png');
+}
+
+.againButton, .scoreButton {
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 210px;
+    height: 65px;
+    cursor: pointer;
+}
+
+.againButton:hover, .scoreButton:hover {
+    opacity: 0.3;
+}

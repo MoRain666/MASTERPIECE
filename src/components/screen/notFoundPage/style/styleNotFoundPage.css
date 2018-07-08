@@ -1,0 +1,38 @@
+.not-found-page-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Anton', sans-serif;
+    font-size: 40px;
+    text-align: center;
+}
+
+.not-found-heading {
+    margin: 20px;
+}
+
+.not-found-page-container img {
+    width: 300px;
+    height: 440px;
+    margin: 20px auto;
+}
+
+.not-found-page-container a {
+    text-decoration: none;
+    color: black;
+    background-color: lightseagreen;
+    width: 175px;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid;
+    border-radius: 17px;
+    margin-top: 30px;
+    font-size: 25px;
+}
+
+.not-found-page-container a:hover {
+    color: brown;
+}

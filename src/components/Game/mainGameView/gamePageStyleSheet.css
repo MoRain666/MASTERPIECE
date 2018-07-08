@@ -1,0 +1,75 @@
+.game-field {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+}
+
+.choose-task-img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.choose-task-img:hover{
+    background-color: red;
+    border-radius: 50%;
+}
+
+.game-field label {
+    margin-bottom: 5px;
+}
+
+.game-field canvas input, select {
+    padding: 5px;
+    font-size: 16px;
+}
+
+.game-field label > input {
+    display: flex;
+    flex-direction: row;
+}
+
+.game-field label > input[type=radio] {
+    visibility: hidden;
+    position: absolute;
+}
+
+.game-field label > input + img {
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin: 0 10px;
+}
+
+.game-field label > input:checked + img {
+    box-shadow: 0 2px 19px 6px white;
+}
+
+.canvas {
+    box-shadow: 0 0 30px #f8f8f8;
+}
+
+.open-choose-task-img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px;
+    position: absolute;
+    bottom: calc(50% - 300px);
+    animation: choose-icon 7s linear infinite;
+    cursor: pointer;
+}
+
+@keyframes choose-icon {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+
+    }
+}

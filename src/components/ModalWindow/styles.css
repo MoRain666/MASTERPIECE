@@ -1,0 +1,32 @@
+.modal-window {
+    width: 600px;
+    height: 200px;
+    background: rgb(253, 234, 205);
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    animation: modal-window-show 0.35s;
+}
+
+@keyframes modal-window-show {
+    from {
+        transform: scaleX(0.1)scaleY(0.1);
+    }
+    to {
+        transform: scaleX(1)scaleY(1);
+
+    }
+}
+
+/*.riddle-window {*/
+    /*width: 900px;*/
+    /*height: 600px;*/
+    /*background: rgb(253, 234, 205);*/
+    /*position: absolute;*/
+    /*display: flex;*/
+    /*justify-content: space-around;*/
+    /*align-items: center;*/
+    /*animation: riddleWindow 0.35s;*/
+/*}*/
+

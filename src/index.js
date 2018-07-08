@@ -1,19 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './css/index.css';
-import registerServiceWorker from './js/registerServiceWorker';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './js/MainComponents/home.jsx';
-import Game from './js/MainComponents/Game/index.jsx';
-import NotFound from './js/MainComponents/notfound.jsx';
-import PreGame from './js/MainComponents/PregameComponents/PreGame.jsx';
-import Score from './js/MainComponents/score';
-import FinalPage from './js/MainComponents/finalPage';
 
-ReactDOM.render(<Router>
+import registerServiceWorker from './components/util/registerServiceWorker';
+
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import './components/util/style/index.css';
+
+import LandingPage from './components/landingPage/landingPage';
+import IntroductionView from './components/intoductionView/introductionView';
+import Game from './components/Game/mainGameView/index.jsx';
+import FinalPage from './components/screen/finalPage/finalPage';
+import Score from './components/scoreView/score';
+import NotFound from './components/screen/notFoundPage/notfound';
+
+ReactDOM.render(
+    <Router>
     <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/pregame" component={PreGame} />
+        <Route exact path="/" component={LandingPage} />
+        <Route path="/pregame" component={IntroductionView} />
         <Route path="/win" component={FinalPage} />
         <Route path="/lost" component={FinalPage} />
         <Route path="/game" component={Game} />
